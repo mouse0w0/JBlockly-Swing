@@ -3,13 +3,11 @@ package team.unstudio.jblockly.block;
 import java.util.ArrayList;
 import java.util.List;
 
-import team.unstudio.jblockly.ui.block.JBlock;
-
 public class BlockGroup {
 	
 	private String node[] = new String[0];
 	private String name;
-	private List<Class<? extends JBlock>> blocks = new ArrayList<>();
+	private List<BlockDescriber> blocks = new ArrayList<>();
 	
 	public String[] getNode() {
 		return node;
@@ -27,7 +25,7 @@ public class BlockGroup {
 		this.name = name;
 	}
 	
-	public List<Class<? extends JBlock>> getBlocks() {
+	public List<BlockDescriber> getBlocks() {
 		return blocks;
 	}
 }

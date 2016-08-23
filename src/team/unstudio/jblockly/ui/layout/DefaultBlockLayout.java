@@ -3,7 +3,6 @@ package team.unstudio.jblockly.ui.layout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.LayoutManager;
 import java.awt.LayoutManager2;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +50,7 @@ public class DefaultBlockLayout implements LayoutManager2{
 	
 	@Override
 	public void addLayoutComponent(Component comp, Object constraints) {
-		// TODO 自动生成的方法存根
-		
+		latest().add(comp);
 	}
 
 	@Override

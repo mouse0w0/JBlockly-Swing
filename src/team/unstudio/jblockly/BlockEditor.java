@@ -18,7 +18,7 @@ public class BlockEditor extends JFrame{
 	private static final long serialVersionUID = 1L;
 
 	public BlockEditor() {
-		setTitle("积木式代码编辑器");
+		setTitle("JBlockly Editor");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1080) / 2,(Toolkit.getDefaultToolkit().getScreenSize().height - 720) / 2,1080, 720);
 		setLayout(new BorderLayout(0, 0));
@@ -48,10 +48,10 @@ public class BlockEditor extends JFrame{
 			public void run() {
 				try {
 					UIManager.setLookAndFeel("com.bulenkov.darcula.DarculaLaf");
+					new BlockEditor().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				new BlockEditor().setVisible(true);
 			}
 		});
 	}
