@@ -2,6 +2,6 @@ package team.unstudio.jblockly.ui.event;
 
 import java.util.EventListener;
 
-public class BlockListener implements EventListener{
+public interface BlockListener extends EventListener{
 
 }

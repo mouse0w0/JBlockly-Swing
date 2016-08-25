@@ -2,12 +2,9 @@ package team.unstudio.jblockly;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 import java.awt.Toolkit;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
-import javax.swing.JToolBar;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 
@@ -24,12 +21,12 @@ public class BlockEditor extends JFrame{
 		setLayout(new BorderLayout(0, 0));
 
 		//初始化工具条
-		JToolBar toolBar = new JToolBar();
-		toolBar.setLayout(new FlowLayout(5, 5, 0));
-		
-		toolBar.add(new JComboBox<>());
-		
-		add(toolBar, BorderLayout.NORTH);
+//		JToolBar toolBar = new JToolBar();
+//		toolBar.setLayout(new FlowLayout(5, 5, 0));
+//		
+//		toolBar.add(new JComboBox<>());
+//		
+//		add(toolBar, BorderLayout.NORTH);
 		
 		//初始化组件容器
 		JTree tree = new JTree();
