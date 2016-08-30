@@ -39,7 +39,7 @@ public class Block extends JPanel{
 	private boolean folded = false;
 	private String tooltip = null;
 	
-	private boolean dragging = false;
+	private boolean dragging = false,selected = false;
 	private int xOld,yOld;
 	private Area blockArea;
 	
@@ -183,7 +183,7 @@ public class Block extends JPanel{
 		
 		Path2D path = new Path2D.Double();
 		
-		if(isFolded()) paintFolded(path,0,0);
+		if(isFolded()) paintFolded(g2d);
 		else{
 			
 		}
@@ -197,28 +197,28 @@ public class Block extends JPanel{
 		paintShadow(g2d);
 	}
 	
-	protected void paintTop(Path2D path,int x,int y){
-		if(describer.getBlockType() == BlockDescriber.INSERT){
-			final int insertOffsetY = 10,insertHeightL = 15,insertHeightS = 9,insetWidth = 7;
-			path.moveTo(insetWidth-1, insertOffsetY+insertHeightS-1);
-		}else{
-			
-		}
-	}
+//	protected void paintTop(Path2D path,int x,int y){
+//		if(describer.getBlockType() == BlockDescriber.INSERT){
+//			final int insertOffsetY = 10,insertHeightL = 15,insertHeightS = 9,insetWidth = 7;
+//			path.moveTo(insetWidth-1, insertOffsetY+insertHeightS-1);
+//		}else{
+//			
+//		}
+//	}
+//	
+//	protected void paintSub(Path2D path,int x,int y){
+//		
+//	}
+//	
+//	protected void paintBranch(Path2D path,int x,int y){
+//		
+//	}
+//	
+//	protected void paintBottom(Path2D path,int x,int y){
+//		
+//	}
 	
-	protected void paintSub(Path2D path,int x,int y){
-		
-	}
-	
-	protected void paintBranch(Path2D path,int x,int y){
-		
-	}
-	
-	protected void paintBottom(Path2D path,int x,int y){
-		
-	}
-	
-	protected void paintFolded(Path2D path,int x,int y){
+	protected void paintFolded(Graphics2D g){
 		
 	}
 	

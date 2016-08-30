@@ -3,16 +3,14 @@ package team.unstudio.jblockly.block;
 import java.awt.Color;
 
 public class BlockDescriber {
-	
-	public static final int NOMRAL = 0;
-	public static final int HAED = 1;
-	public static final int END = 2;
-	public static final int INSERT = 3;
-	public static final int ONLY = 4;
+
+	public enum BlockType {
+		NOMRAL,HEAD,END,INSERT,ONLY;
+	}
 
 	private String name;
 	private Color color = new Color(255, 255, 255);
-	private int blockType = NOMRAL;
+	private BlockType blockType = BlockType.NOMRAL;
 	private String message;
 	private String output;
 	private String[] args;
@@ -68,11 +66,11 @@ public class BlockDescriber {
 		this.help = help;
 	}
 
-	public int getBlockType() {
+	public BlockType getBlockType() {
 		return blockType;
 	}
 
-	public void setBlockType(int blockType) {
+	public void setBlockType(BlockType blockType) {
 		this.blockType = blockType;
 	}
 }
