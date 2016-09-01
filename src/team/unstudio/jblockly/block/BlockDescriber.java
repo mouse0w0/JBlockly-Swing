@@ -8,7 +8,7 @@ public class BlockDescriber {
 		NOMRAL,HEAD,END,INSERT,ONLY;
 	}
 
-	private String name;
+	private final String name;
 	private Color color = new Color(255, 255, 255);
 	private BlockType blockType = BlockType.NOMRAL;
 	private String message;
@@ -16,14 +16,13 @@ public class BlockDescriber {
 	private String[] args;
 	private String help;
 	
-	public BlockDescriber() {}
+	public BlockDescriber(String name) {
+		if(name == null||name.isEmpty()) throw new IllegalArgumentException();
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Color getColor() {

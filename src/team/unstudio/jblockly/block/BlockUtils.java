@@ -20,6 +20,6 @@ public class BlockUtils {
 	
 	public static final int SIDE_WIDTH = 10;
 	
-	public static final int GAPX = 5;
-	public static final int GAPY = 5;
+	public static final int VGAP = 5;
+	public static final int HGAP = 5;
 }

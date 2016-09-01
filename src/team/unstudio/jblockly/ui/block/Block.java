@@ -168,61 +168,25 @@ public class Block extends JPanel{
 		this.folded = folded;
 	}
 	
-	//Render
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
 	
-	private List<Line2D> darkShadow = new ArrayList<>();
-	private List<Area> insertSlotAreas = new ArrayList<>();
+	//Render
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		darkShadow.clear();
-		insertSlotAreas.clear();
-		
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 		
-		Path2D path = new Path2D.Double();
-		
-		if(isFolded()) paintFolded(g2d);
-		else{
-			
-		}
-		
-		Area area = new Area(path);
-		for(Area a:insertSlotAreas) area.subtract(a);
-		
 		g2d.setColor(describer.getColor());
-		g2d.fill(area);
-		
-		paintShadow(g2d);
 	}
 	
-//	protected void paintTop(Path2D path,int x,int y){
-//		if(describer.getBlockType() == BlockDescriber.INSERT){
-//			final int insertOffsetY = 10,insertHeightL = 15,insertHeightS = 9,insetWidth = 7;
-//			path.moveTo(insetWidth-1, insertOffsetY+insertHeightS-1);
-//		}else{
-//			
-//		}
-//	}
-//	
-//	protected void paintSub(Path2D path,int x,int y){
-//		
-//	}
-//	
-//	protected void paintBranch(Path2D path,int x,int y){
-//		
-//	}
-//	
-//	protected void paintBottom(Path2D path,int x,int y){
-//		
-//	}
-	
-	protected void paintFolded(Graphics2D g){
-		
-	}
-	
-	protected void paintShadow(Graphics2D g) {
+	protected void paintShadow(Graphics2D g,List<Line2D> darkShadow) {
 		g.setColor(describer.getColor().darker());
 		for(Line2D line:darkShadow) g.draw(line);
 	}

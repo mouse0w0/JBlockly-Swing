@@ -19,22 +19,12 @@ public class BlockEditor extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBounds((Toolkit.getDefaultToolkit().getScreenSize().width - 1080) / 2,(Toolkit.getDefaultToolkit().getScreenSize().height - 720) / 2,1080, 720);
 		setLayout(new BorderLayout(0, 0));
-
-		//初始化工具条
-//		JToolBar toolBar = new JToolBar();
-//		toolBar.setLayout(new FlowLayout(5, 5, 0));
-//		
-//		toolBar.add(new JComboBox<>());
-//		
-//		add(toolBar, BorderLayout.NORTH);
 		
-		//初始化组件容器
 		JTree tree = new JTree();
 		
 		JScrollPane scrollPane2 = new JScrollPane(tree);
 		add(scrollPane2, BorderLayout.WEST);
 		
-		//初始化方块编辑区
 		JScrollPane scrollPane = new JScrollPane(new BlockWorkspace());
 		add(scrollPane, BorderLayout.CENTER);
 	}
