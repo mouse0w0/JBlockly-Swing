@@ -8,15 +8,14 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.awt.geom.Area;
 import java.awt.geom.Line2D;
-import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JPanel;
 
 import team.unstudio.jblockly.block.BlockDescriber;
+import team.unstudio.jblockly.block.BlockInput;
 import team.unstudio.jblockly.block.IInput;
 import team.unstudio.jblockly.ui.BlockMenu;
 import team.unstudio.jblockly.ui.BlockWorkspace;
@@ -29,9 +28,9 @@ public class Block extends JPanel{
 	private final BlockDescriber describer;
 	
 	private BlockWorkspace workspace;
-	private Block parentBlock;
+	private BlockInput parent;
 	private Block nextBlock;
-	private IInput[] inputs = new IInput[0];
+	private List<IInput> inputs = new ArrayList<>();
 	
 	private boolean editable = true;
 	private boolean moveable = true;
@@ -41,7 +40,6 @@ public class Block extends JPanel{
 	
 	private boolean dragging = false,selected = false;
 	private int xOld,yOld;
-	private Area blockArea;
 	
 	public Block(BlockDescriber describer) {
 		this.describer = describer;
@@ -112,14 +110,6 @@ public class Block extends JPanel{
 		this.workspace = workspace;
 	}
 
-	public Block getParentBlock() {
-		return parentBlock;
-	}
-
-	public void setParentBlock(Block parentBlock) {
-		this.parentBlock = parentBlock;
-	}
-
 	public Block getNextBlock() {
 		return nextBlock;
 	}
@@ -176,6 +166,14 @@ public class Block extends JPanel{
 		this.selected = selected;
 	}
 	
+	public BlockInput getParentInput() {
+		return parent;
+	}
+
+	public void setParentInput(BlockInput parent) {
+		this.parent = parent;
+	}
+	
 	//Render
 	
 	@Override
@@ -189,5 +187,9 @@ public class Block extends JPanel{
 	protected void paintShadow(Graphics2D g,List<Line2D> darkShadow) {
 		g.setColor(describer.getColor().darker());
 		for(Line2D line:darkShadow) g.draw(line);
+	}
+
+	public IInput[] getInputs() {
+		return inputs.toArray(new IInput[0]);
 	}
 }

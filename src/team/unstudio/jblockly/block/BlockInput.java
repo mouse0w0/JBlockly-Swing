@@ -8,7 +8,7 @@ import team.unstudio.jblockly.ui.block.Block;
 public class BlockInput implements IInput{
 	
 	public enum InputType{
-		BRANCH,INSERT,INSERT_SLOT
+		BRANCH,INSERT,INSERT_SLOT,NEXT
 	}
 	
 	private Block block,parent;

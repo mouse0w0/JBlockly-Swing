@@ -18,10 +18,16 @@ import team.unstudio.jblockly.ui.block.Block;
 public class DefaultBlockLayout implements LayoutManager{
 	
 	private int vgap,hgap;
+	private Area blockArea;
+	private List<Line2D> darkShadow = new ArrayList<>();
 	
 	public DefaultBlockLayout(int vgap,int hgap) {
 		this.vgap = vgap;
 		this.hgap = hgap;
+	}
+	
+	public DefaultBlockLayout() {
+		this(10,10);
 	}
 	
 	@Override
