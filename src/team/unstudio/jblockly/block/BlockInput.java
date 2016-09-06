@@ -22,18 +22,6 @@ public class BlockInput implements IInput{
 		return null;
 	}
 
-	@Override
-	public String getDescription() {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
-	public void setDescription(String desc) {
-		// TODO 自动生成的方法存根
-		
-	}
-
 	public Block getBlock() {
 		return block;
 	}
@@ -76,5 +64,11 @@ public class BlockInput implements IInput{
 
 	public void setType(InputType type) {
 		this.type = type;
+	}
+
+	@Override
+	public InputDescriber getDescriber() {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 }

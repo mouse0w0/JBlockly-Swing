@@ -3,6 +3,7 @@ package team.unstudio.jblockly.ui.component;
 import javax.swing.JComboBox;
 
 import team.unstudio.jblockly.block.IInput;
+import team.unstudio.jblockly.block.InputDescriber;
 
 public class BlockComboBox extends JComboBox<String> implements IInput{
 
@@ -13,15 +14,9 @@ public class BlockComboBox extends JComboBox<String> implements IInput{
 		return (String) getSelectedItem();
 	}
 
-	private String desc;
-	
 	@Override
-	public String getDescription() {
-		return desc;
-	}
-
-	@Override
-	public void setDescription(String desc) {
-		this.desc = desc;
+	public InputDescriber getDescriber() {
+		// TODO 自动生成的方法存根
+		return null;
 	}
 }

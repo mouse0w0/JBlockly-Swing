@@ -3,6 +3,7 @@ package team.unstudio.jblockly.ui.component;
 import javax.swing.JTextField;
 
 import team.unstudio.jblockly.block.IInput;
+import team.unstudio.jblockly.block.InputDescriber;
 
 public class BlockTextField extends JTextField implements IInput{
 
@@ -13,15 +14,10 @@ public class BlockTextField extends JTextField implements IInput{
 		return getText();
 	}
 
-	private String desc;
+	@Override
+	public InputDescriber getDescriber() {
+		// TODO 自动生成的方法存根
+		return null;
+	}
 	
-	@Override
-	public String getDescription() {
-		return desc;
-	}
-
-	@Override
-	public void setDescription(String desc) {
-		this.desc = desc;
-	}
 }

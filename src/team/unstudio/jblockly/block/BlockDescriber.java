@@ -12,9 +12,7 @@ public class BlockDescriber {
 	private Color color = new Color(255, 255, 255);
 	private BlockType blockType = BlockType.NOMRAL;
 	private String message;
-	private String output;
-	private String[] args;
-	private String help;
+	private InputDescriber inputs[];
 	
 	public BlockDescriber(String name) {
 		if(name == null||name.isEmpty()) throw new IllegalArgumentException();
@@ -29,47 +27,58 @@ public class BlockDescriber {
 		return color;
 	}
 
-	public void setColor(Color color) {
-		this.color = color;
-	}
-
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getOutput() {
-		return output;
-	}
-
-	public void setOutput(String output) {
-		this.output = output;
-	}
-
-	public String[] getArgs() {
-		return args;
-	}
-
-	public void setArgs(String[] args) {
-		this.args = args;
-	}
-
-	public String getHelp() {
-		return help;
-	}
-
-	public void setHelp(String help) {
-		this.help = help;
+	public InputDescriber[] getInputs() {
+		return inputs;
 	}
 
 	public BlockType getBlockType() {
 		return blockType;
 	}
+	
+	public static class Builder{
+		
+		private final String name;
+		private Color color = new Color(255, 255, 255);
+		private BlockType blockType = BlockType.NOMRAL;
+		private String message = "";
+		private InputDescriber inputs[] = new InputDescriber[0];
+		
+		public Builder(String name) {
+			if(name == null||name.isEmpty()) throw new IllegalArgumentException();
+			this.name = name;
+		}
+		
+		public Builder setColor(Color color) {
+			this.color = color;
+			return this;
+		}
 
-	public void setBlockType(BlockType blockType) {
-		this.blockType = blockType;
+		public Builder setMessage(String message) {
+			this.message = message;
+			return this;
+		}
+
+		public Builder setInputs(InputDescriber ...inputs) {
+			this.inputs = inputs;
+			return this;
+		}
+
+		public Builder setBlockType(BlockType blockType) {
+			this.blockType = blockType;
+			return this;
+		}
+		
+		public BlockDescriber done(){
+			BlockDescriber describer = new BlockDescriber(name);
+			describer.color = color;
+			describer.blockType = blockType;
+			describer.message = message;
+			describer.inputs = inputs;
+			return describer;
+		}
 	}
 }
