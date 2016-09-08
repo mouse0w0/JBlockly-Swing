@@ -1,5 +1,7 @@
 package team.unstudio.jblockly.ui.component;
 
+import java.awt.Point;
+
 import javax.swing.JComboBox;
 
 import team.unstudio.jblockly.block.IInput;
@@ -18,5 +20,17 @@ public class BlockComboBox extends JComboBox<String> implements IInput{
 	public InputDescriber getDescriber() {
 		// TODO 自动生成的方法存根
 		return null;
+	}
+
+	private Point textPoint;
+
+	@Override
+	public Point getTextPoint() {
+		return textPoint;
+	}
+
+	@Override
+	public void setTextPoint(Point point) {
+		textPoint = point;
 	}
 }

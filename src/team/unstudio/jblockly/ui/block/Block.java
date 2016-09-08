@@ -38,7 +38,7 @@ public class Block extends JPanel{
 	private boolean folded = false;
 	private String tooltip = null;
 	
-	private boolean dragging = false,selected = false;
+	private boolean dragging = false,selected = false,onlyline = false;
 	private int xOld,yOld;
 	
 	public Block(BlockDescriber describer) {
@@ -174,6 +174,18 @@ public class Block extends JPanel{
 		this.parent = parent;
 	}
 	
+	public IInput[] getInputs() {
+		return inputs.toArray(new IInput[0]);
+	}
+
+	public boolean isOnlyline() {
+		return onlyline;
+	}
+
+	public void setOnlyline(boolean onlyline) {
+		this.onlyline = onlyline;
+	}
+	
 	//Render
 	
 	@Override
@@ -187,9 +199,5 @@ public class Block extends JPanel{
 	protected void paintShadow(Graphics2D g,List<Line2D> darkShadow) {
 		g.setColor(describer.getColor().darker());
 		for(Line2D line:darkShadow) g.draw(line);
-	}
-
-	public IInput[] getInputs() {
-		return inputs.toArray(new IInput[0]);
 	}
 }

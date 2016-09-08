@@ -1,5 +1,6 @@
 package team.unstudio.jblockly.block;
 
+import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Area;
 
@@ -8,7 +9,7 @@ import team.unstudio.jblockly.ui.block.Block;
 public class BlockInput implements IInput{
 	
 	public enum InputType{
-		BRANCH,INSERT,INSERT_SLOT,NEXT
+		BRANCH,INSERT_SLOT,INSERT_END_SLOT,NEXT
 	}
 	
 	private Block block,parent;
@@ -18,7 +19,6 @@ public class BlockInput implements IInput{
 
 	@Override
 	public String value() {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
@@ -65,10 +65,32 @@ public class BlockInput implements IInput{
 	public void setType(InputType type) {
 		this.type = type;
 	}
-
+	
+	private final InputDescriber describer;
+	
+	public BlockInput(InputDescriber describer) {
+		this.describer = describer;
+	}
+	
 	@Override
 	public InputDescriber getDescriber() {
-		// TODO 自动生成的方法存根
-		return null;
+		return describer;
+	}
+	
+	private Point textPoint;
+
+	@Override
+	public Point getTextPoint() {
+		return textPoint;
+	}
+
+	@Override
+	public void setTextPoint(Point point) {
+		textPoint = point;
+	}
+
+	@Override
+	public Dimension getPreferredSize() {
+		return new Dimension((int)(block.getFontMetrics(BlockUtils.DEFAULT_FONT).getStringBounds(describer.getDescription(), block.getGraphics()).getWidth())+BlockUtils.MIN_TEXT_GAP+block.getPreferredSize().width,block.getPreferredSize().height);
 	}
 }

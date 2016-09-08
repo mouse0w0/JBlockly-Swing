@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team.unstudio.jblockly.block.BlockUtils;
+import team.unstudio.jblockly.block.IInput;
 import team.unstudio.jblockly.block.BlockDescriber.BlockType;
 import team.unstudio.jblockly.ui.block.Block;
 
@@ -19,15 +20,15 @@ public class DefaultBlockLayout implements LayoutManager{
 	
 	private int vgap,hgap;
 	private Area blockArea;
-	private List<Line2D> darkShadow = new ArrayList<>();
+	private final List<Line2D> darkShadow = new ArrayList<>();
 	
 	public DefaultBlockLayout(int vgap,int hgap) {
 		this.vgap = vgap;
 		this.hgap = hgap;
 	}
-	
+
 	public DefaultBlockLayout() {
-		this(10,10);
+		this(BlockUtils.VGAP,BlockUtils.HGAP);
 	}
 	
 	@Override
@@ -36,8 +37,16 @@ public class DefaultBlockLayout implements LayoutManager{
 		
 		Block block = (Block) parent;
 		Path2D path = new Path2D.Double();
-		List<Line2D> darkShadow = new ArrayList<>();
 		List<Area> insertSlotAreas = new ArrayList<>();
+		darkShadow.clear();
+		
+		//size
+		int width=150,height=vgap;
+		for(IInput i:block.getInputs()){
+			Dimension d=i.getPreferredSize();
+			if(d.width>width)width=d.width;
+			height+=d.height+vgap;
+		}
 	}
 	
 	@Override
@@ -143,5 +152,29 @@ public class DefaultBlockLayout implements LayoutManager{
 		darkShadow.add(new Line2D.Double(x+BlockUtils.INSERT_SLOT_WIDTH-1, y+BlockUtils.INSERT_SLOT_OFFSET_Y+BlockUtils.INSERT_SLOT_HEIGHT-1, x+BlockUtils.INSERT_SLOT_WIDTH-1, y+height-1));
 		darkShadow.add(new Line2D.Double(x+BlockUtils.INSERT_SLOT_WIDTH-1, y, x+width-1, y));
 		return new Area(p);
+	}
+	
+	public int getVgap() {
+		return vgap;
+	}
+
+	public void setVgap(int vgap) {
+		this.vgap = vgap;
+	}
+
+	public int getHgap() {
+		return hgap;
+	}
+
+	public void setHgap(int hgap) {
+		this.hgap = hgap;
+	}
+
+	public Area getBlockArea() {
+		return blockArea;
+	}
+
+	public List<Line2D> getDarkShadow() {
+		return darkShadow;
 	}
 }
