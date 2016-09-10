@@ -40,13 +40,6 @@ public class DefaultBlockLayout implements LayoutManager{
 		List<Area> insertSlotAreas = new ArrayList<>();
 		darkShadow.clear();
 		
-		//size
-		int width=150,height=vgap;
-		for(IInput i:block.getInputs()){
-			Dimension d=i.getPreferredSize();
-			if(d.width>width)width=d.width;
-			height+=d.height+vgap;
-		}
 	}
 	
 	@Override
