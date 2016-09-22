@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team.unstudio.jblockly.block.BlockUtils;
-import team.unstudio.jblockly.block.IInput;
-import team.unstudio.jblockly.block.BlockDescriber.BlockType;
+import team.unstudio.jblockly.block.BlockDescriber.HeadType;
 import team.unstudio.jblockly.ui.block.Block;
 
 public class DefaultBlockLayout implements LayoutManager{
@@ -60,15 +59,7 @@ public class DefaultBlockLayout implements LayoutManager{
 	public void removeLayoutComponent(Component comp) {}
 	
 	protected void prePaintTop(Block block,Path2D path,int x,int y,int width,List<Line2D> darkShadow){
-		if(block.getBlockDescriber().getBlockType() == BlockType.INSERT){
-			path.moveTo(x+BlockUtils.INSERT_WIDTH-1, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1);
-			path.lineTo(x, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1);
-			path.lineTo(x, y+BlockUtils.INSERT_OFFSET_Y-1);
-			path.lineTo(x+BlockUtils.INSERT_WIDTH-1, y+BlockUtils.INSERT_OFFSET_Y-1);
-			path.lineTo(x+BlockUtils.INSERT_WIDTH-1, y);
-			path.lineTo(x+width-1, y);
-			darkShadow.add(new Line2D.Double(x+BlockUtils.INSERT_WIDTH-1, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1, x, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1));
-		}else if(block.getBlockDescriber().getBlockType() == BlockType.NOMRAL||block.getBlockDescriber().getBlockType() == BlockType.END){
+		if(block.getBlockDescriber().getHeadType() == HeadType.NEXT){
 			path.moveTo(x, y);
 			path.lineTo(x+BlockUtils.NEXT_SLOT_OFFSET_X-1, y);
 			path.lineTo(x+BlockUtils.NEXT_SLOT_OFFSET_X-1, y+BlockUtils.NEXT_SLOT_HEIGHT-1);
@@ -76,6 +67,14 @@ public class DefaultBlockLayout implements LayoutManager{
 			path.lineTo(x+BlockUtils.NEXT_SLOT_OFFSET_X+BlockUtils.INSERT_WIDTH-1, y);
 			path.lineTo(x+width-1, y);
 			darkShadow.add(new Line2D.Double(x+BlockUtils.NEXT_SLOT_OFFSET_X-1, y, x+BlockUtils.NEXT_SLOT_OFFSET_X-1, y+BlockUtils.NEXT_SLOT_HEIGHT-1));
+		}else if(block.getBlockDescriber().getHeadType() == HeadType.INSERT){
+			path.moveTo(x+BlockUtils.INSERT_WIDTH-1, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1);
+			path.lineTo(x, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1);
+			path.lineTo(x, y+BlockUtils.INSERT_OFFSET_Y-1);
+			path.lineTo(x+BlockUtils.INSERT_WIDTH-1, y+BlockUtils.INSERT_OFFSET_Y-1);
+			path.lineTo(x+BlockUtils.INSERT_WIDTH-1, y);
+			path.lineTo(x+width-1, y);
+			darkShadow.add(new Line2D.Double(x+BlockUtils.INSERT_WIDTH-1, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1, x, y+BlockUtils.INSERT_OFFSET_Y+BlockUtils.INSERT_HEIGHT-1));
 		}else{
 			path.moveTo(x, y);
 			path.lineTo(x+width-1, y);
@@ -100,9 +99,9 @@ public class DefaultBlockLayout implements LayoutManager{
 		darkShadow.add(new Line2D.Double(x+BlockUtils.SIDE_WIDTH+BlockUtils.NEXT_OFFSET_X-1, y, x+BlockUtils.SIDE_WIDTH-1, y));
 	}
 	
-	protected void prePaintBottom(Block block,Path2D path,int x,int y,int width,List<Line2D> darkShadow){
+	protected void prePaintBottom(Block block,Path2D path,int x,int y,int width,List<Line2D> darkShadow,boolean next){
 		path.lineTo(x+width-1, y);
-		if(block.getBlockDescriber().getBlockType() == BlockType.HEAD||block.getBlockDescriber().getBlockType() == BlockType.NOMRAL){
+		if(next){
 			path.lineTo(x+BlockUtils.NEXT_OFFSET_X+BlockUtils.NEXT_WIDTH-1, y);
 			path.lineTo(x+BlockUtils.NEXT_OFFSET_X+BlockUtils.NEXT_WIDTH-1, y+BlockUtils.NEXT_HEIGHT-1);
 			path.lineTo(x+BlockUtils.NEXT_OFFSET_X-1, y+BlockUtils.NEXT_HEIGHT-1);
@@ -115,7 +114,6 @@ public class DefaultBlockLayout implements LayoutManager{
 			darkShadow.add(new Line2D.Double(x+width-1, y, x, y));
 		}
 		path.lineTo(x, y);
-
 	}
 	
 	protected Area prePaintInsertEndSlot(Block block,Path2D path,int x,int y,List<Line2D> darkShadow){

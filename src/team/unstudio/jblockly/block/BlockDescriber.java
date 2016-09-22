@@ -4,13 +4,13 @@ import java.awt.Color;
 
 public class BlockDescriber {
 
-	public enum BlockType {
-		NOMRAL,HEAD,END,INSERT,ONLY;
+	public enum HeadType {
+		NEXT,INSERT,NONE;
 	}
 
 	private final String name;
 	private Color color = new Color(255, 255, 255);
-	private BlockType blockType = BlockType.NOMRAL;
+	private HeadType headType = HeadType.NEXT;
 	private String message;
 	private InputDescriber inputs[];
 	
@@ -35,15 +35,15 @@ public class BlockDescriber {
 		return inputs;
 	}
 
-	public BlockType getBlockType() {
-		return blockType;
+	public HeadType getHeadType() {
+		return headType;
 	}
 	
 	public static class Builder{
 		
 		private final String name;
 		private Color color = new Color(255, 255, 255);
-		private BlockType blockType = BlockType.NOMRAL;
+		private HeadType blockType = HeadType.NEXT;
 		private String message = "";
 		private InputDescriber inputs[] = new InputDescriber[0];
 		
@@ -67,7 +67,7 @@ public class BlockDescriber {
 			return this;
 		}
 
-		public Builder setBlockType(BlockType blockType) {
+		public Builder setBlockType(HeadType blockType) {
 			this.blockType = blockType;
 			return this;
 		}
@@ -75,7 +75,7 @@ public class BlockDescriber {
 		public BlockDescriber done(){
 			BlockDescriber describer = new BlockDescriber(name);
 			describer.color = color;
-			describer.blockType = blockType;
+			describer.headType = blockType;
 			describer.message = message;
 			describer.inputs = inputs;
 			return describer;
