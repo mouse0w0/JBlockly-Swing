@@ -11,7 +11,7 @@ import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import team.unstudio.jblockly.old.BlockDescriber.HeadType;
+import team.unstudio.jblockly.old.block.BlockDescriber.HeadType;
 import team.unstudio.jblockly.old.block.BlockUtils;
 import team.unstudio.jblockly.old.ui.block.Block;
 

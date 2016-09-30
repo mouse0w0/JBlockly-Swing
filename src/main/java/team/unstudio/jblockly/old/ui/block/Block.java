@@ -14,7 +14,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import team.unstudio.jblockly.core.BlockDescriber;
+import team.unstudio.jblockly.old.block.BlockDescriber;
 import team.unstudio.jblockly.old.block.BlockInput;
 import team.unstudio.jblockly.old.block.IInput;
 import team.unstudio.jblockly.old.ui.BlockMenu;
