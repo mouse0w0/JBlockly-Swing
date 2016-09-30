@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui.component;
+package team.unstudio.jblockly.old.ui.component;
 
 import javax.swing.JScrollPane;
 

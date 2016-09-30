@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.block;
+package team.unstudio.jblockly.core;
 
 import java.util.ArrayList;
 import java.util.List;

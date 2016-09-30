@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui.component;
+package team.unstudio.jblockly.old.ui.component;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -11,7 +11,7 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import team.unstudio.jblockly.ui.BlockWorkspace;
+import team.unstudio.jblockly.old.ui.BlockWorkspace;
 
 public class JBlockInsertSlot extends JPanel{
 

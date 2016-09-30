@@ -1,4 +1,4 @@
-package team.unstudio.jblockly;
+package team.unstudio.jblockly.old;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,7 +8,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 
-import team.unstudio.jblockly.ui.BlockWorkspace;
+import team.unstudio.jblockly.old.ui.BlockWorkspace;
 
 public class BlockEditor extends JFrame{
 	

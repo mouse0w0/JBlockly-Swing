@@ -1,11 +1,11 @@
-package team.unstudio.jblockly.block;
+package team.unstudio.jblockly.core;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BlockManager {
 	
-	private static final BlockManager INSTANCE = new BlockManager();
+	public static final BlockManager INSTANCE = new BlockManager();
 	
 	private final List<BlockDescriber> blocks = new ArrayList<>();
 	private final List<BlockGroup> groups = new ArrayList<>();

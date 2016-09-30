@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui.component;
+package team.unstudio.jblockly.old.ui.component;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -15,8 +15,8 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JPanel;
 
-import team.unstudio.jblockly.ui.BlockMenu;
-import team.unstudio.jblockly.ui.BlockWorkspace;
+import team.unstudio.jblockly.old.ui.BlockMenu;
+import team.unstudio.jblockly.old.ui.BlockWorkspace;
 
 public class JBlockInsert extends JPanel{
 

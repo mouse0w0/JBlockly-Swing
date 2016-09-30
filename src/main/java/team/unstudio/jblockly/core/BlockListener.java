@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui.event;
+package team.unstudio.jblockly.core;
 
 import java.util.EventListener;
 

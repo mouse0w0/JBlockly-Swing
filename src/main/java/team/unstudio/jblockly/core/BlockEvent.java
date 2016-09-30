@@ -1,8 +1,8 @@
-package team.unstudio.jblockly.ui.event;
+package team.unstudio.jblockly.core;
 
 import java.util.EventObject;
 
-import team.unstudio.jblockly.ui.block.Block;
+import team.unstudio.jblockly.old.ui.block.Block;
 
 public class BlockEvent extends EventObject{
 

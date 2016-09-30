@@ -1,11 +1,11 @@
-package team.unstudio.jblockly.ui.component;
+package team.unstudio.jblockly.old.ui.component;
 
 import java.awt.Point;
 
 import javax.swing.JComboBox;
 
-import team.unstudio.jblockly.block.IInput;
-import team.unstudio.jblockly.block.InputDescriber;
+import team.unstudio.jblockly.old.block.IInput;
+import team.unstudio.jblockly.old.block.InputDescriber;
 
 public class BlockComboBox extends JComboBox<String> implements IInput{
 

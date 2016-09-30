@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui;
+package team.unstudio.jblockly.old.ui;
 
 import java.awt.Container;
 import java.awt.event.ActionEvent;
@@ -8,8 +8,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
-import team.unstudio.jblockly.ui.block.JBlock;
-import team.unstudio.jblockly.ui.component.JBlockInsert;
+import team.unstudio.jblockly.old.ui.block.JBlock;
+import team.unstudio.jblockly.old.ui.component.JBlockInsert;
 
 public class BlockMenu extends JPopupMenu{
 

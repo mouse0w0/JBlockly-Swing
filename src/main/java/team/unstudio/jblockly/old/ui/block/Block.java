@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui.block;
+package team.unstudio.jblockly.old.ui.block;
 
 import java.awt.Container;
 import java.awt.Graphics;
@@ -14,12 +14,12 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import team.unstudio.jblockly.block.BlockDescriber;
-import team.unstudio.jblockly.block.BlockInput;
-import team.unstudio.jblockly.block.IInput;
-import team.unstudio.jblockly.ui.BlockMenu;
-import team.unstudio.jblockly.ui.BlockWorkspace;
-import team.unstudio.jblockly.ui.layout.DefaultBlockLayout;
+import team.unstudio.jblockly.core.BlockDescriber;
+import team.unstudio.jblockly.old.block.BlockInput;
+import team.unstudio.jblockly.old.block.IInput;
+import team.unstudio.jblockly.old.ui.BlockMenu;
+import team.unstudio.jblockly.old.ui.BlockWorkspace;
+import team.unstudio.jblockly.old.ui.layout.DefaultBlockLayout;
 
 public class Block extends JPanel{
 

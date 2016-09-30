@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.ui;
+package team.unstudio.jblockly.old.ui;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -7,14 +7,14 @@ import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import team.unstudio.jblockly.ui.block.JBlock;
-import team.unstudio.jblockly.ui.block.JBlockBase;
-import team.unstudio.jblockly.ui.block.JBlockHead;
-import team.unstudio.jblockly.ui.block.JBlockInsert;
-import team.unstudio.jblockly.ui.block.JBlockInsertEndSlot;
-import team.unstudio.jblockly.ui.block.JBlockInsertSlot;
-import team.unstudio.jblockly.ui.block.JBlockMulti;
-import team.unstudio.jblockly.ui.block.JBlockMultiPackage;
+import team.unstudio.jblockly.old.ui.block.JBlock;
+import team.unstudio.jblockly.old.ui.block.JBlockBase;
+import team.unstudio.jblockly.old.ui.block.JBlockHead;
+import team.unstudio.jblockly.old.ui.block.JBlockInsert;
+import team.unstudio.jblockly.old.ui.block.JBlockInsertEndSlot;
+import team.unstudio.jblockly.old.ui.block.JBlockInsertSlot;
+import team.unstudio.jblockly.old.ui.block.JBlockMulti;
+import team.unstudio.jblockly.old.ui.block.JBlockMultiPackage;
 
 public class BlockWorkspace extends JPanel{
 	
