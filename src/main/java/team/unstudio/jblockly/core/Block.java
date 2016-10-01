@@ -3,6 +3,8 @@ package team.unstudio.jblockly.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.canvas.GraphicsContext;
+
 public class Block implements Cloneable{
 	
 	public enum LayoutType{
@@ -166,5 +168,9 @@ public class Block implements Cloneable{
 	
 	public void dispose(){
 		//TODO:dispose
+	}
+	
+	public void draw(GraphicsContext graphics){
+		
 	}
 }

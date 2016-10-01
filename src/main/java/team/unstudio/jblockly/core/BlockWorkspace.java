@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 
 public class BlockWorkspace extends Pane{
@@ -41,5 +42,12 @@ public class BlockWorkspace extends Pane{
 
 	public void setSelectBlock(Block selectBlock) {
 		this.selectBlock = selectBlock;
+	}
+	
+	public void draw(){
+		GraphicsContext graphics = canvas.getGraphicsContext2D();
+		graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+		
+		blocks.forEach(block->block.draw(graphics));
 	}
 }

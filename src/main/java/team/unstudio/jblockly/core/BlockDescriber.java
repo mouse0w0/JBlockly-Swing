@@ -1,7 +1,6 @@
 package team.unstudio.jblockly.core;
 
-import java.awt.Color;
-
+import javafx.scene.paint.Color;
 
 public class BlockDescriber {
 	
@@ -10,7 +9,7 @@ public class BlockDescriber {
 	}
 	
 	private final String name;
-	private Color color = new Color(255, 255, 255);
+	private Color color = new Color(1.0, 1.0, 1.0, 1.0);
 	private ConnectionType connectionType = ConnectionType.None;
 	private String message;
 	private String tooltip;
