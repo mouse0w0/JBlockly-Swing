@@ -1,9 +1,9 @@
 package team.unstudio.jblockly.core.component;
 
 import javafx.scene.control.ComboBox;
-import team.unstudio.jblockly.core.BlockInput;
+import team.unstudio.jblockly.core.ValueInput;
 
-public class BlockComboBox extends ComboBox<String> implements BlockInput<String>{
+public class BlockComboBox extends ComboBox<String> implements ValueInput<String>{
 
 	@Override
 	public AlignType getAlignType() {

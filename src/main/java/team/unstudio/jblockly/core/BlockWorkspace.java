@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class BlockWorkspace extends Pane{
 	
@@ -46,6 +47,7 @@ public class BlockWorkspace extends Pane{
 	
 	public void draw(){
 		GraphicsContext graphics = canvas.getGraphicsContext2D();
+		graphics.setFill(Color.WHITESMOKE);
 		graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 		
 		blocks.forEach(block->block.draw(graphics));

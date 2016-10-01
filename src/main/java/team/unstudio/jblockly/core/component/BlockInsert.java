@@ -1,8 +1,8 @@
 package team.unstudio.jblockly.core.component;
 
-import team.unstudio.jblockly.core.BlockInput;
+import team.unstudio.jblockly.core.ValueInput;
 
-public class BlockInsert implements BlockInput<String>{
+public class BlockInsert implements ValueInput<String>{
 
 	@Override
 	public AlignType getAlignType() {

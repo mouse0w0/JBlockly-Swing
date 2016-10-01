@@ -1,8 +1,5 @@
 package team.unstudio.jblockly.core;
 
-public interface BlockInput<T> extends BlockComponent{
+public class BlockInput {
 
-	String getName();
-	T getValue();
-	
 }

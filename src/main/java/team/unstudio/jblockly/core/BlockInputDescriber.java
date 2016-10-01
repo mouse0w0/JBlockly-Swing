@@ -30,5 +30,5 @@ public abstract class BlockInputDescriber {
 		this.defaultValue = defaultValue;
 	}
 	
-	public abstract BlockInput<?> newInput();
+	public abstract ValueInput<?> newInput();
 }
