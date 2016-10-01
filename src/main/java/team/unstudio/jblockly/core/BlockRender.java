@@ -24,8 +24,8 @@ public class BlockRender {
 					j++;
 				}
 				path.getElements().addAll(getPathElementFromSVG(svg.substring(i, j)));
-			}
-			i++;
+				i=j;
+			} else i++;
 		}
 		return path;
 	}

@@ -13,6 +13,6 @@ public interface BlockComponent {
 	void setX(int x);
 	void setY(int y);
 	void setPoint(int x,int y);
-	int getHeight();
-	int getWidth();
+	double getHeight();
+	double getWidth();
 }

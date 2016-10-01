@@ -15,6 +15,15 @@ public class BlockWorkspace extends Pane{
 	
 	public BlockWorkspace() {
 		getChildren().add(canvas);
+		canvas.setOnMousePressed(event->{
+			
+		});
+		canvas.setOnMouseReleased(event->{
+			
+		});
+		canvas.setOnMouseMoved(event->{
+			
+		});
 	}
 
 	public List<Block> getBlocks() {

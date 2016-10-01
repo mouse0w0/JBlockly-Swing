@@ -2,7 +2,6 @@ package team.unstudio.jblockly.core;
 
 import java.awt.Color;
 
-import team.unstudio.jblockly.old.block.InputDescriber;
 
 public class BlockDescriber {
 	
@@ -15,7 +14,7 @@ public class BlockDescriber {
 	private ConnectionType connectionType = ConnectionType.None;
 	private String message;
 	private String tooltip;
-	private InputDescriber[] inputs;
+	private BlockInputDescriber[] inputs;
 	
 	public BlockDescriber(String name) {
 		if(name == null||name.isEmpty()) throw new IllegalArgumentException();
@@ -42,7 +41,7 @@ public class BlockDescriber {
 		return tooltip;
 	}
 
-	public InputDescriber[] getInputs() {
+	public BlockInputDescriber[] getInputs() {
 		return inputs;
 	}
 }
