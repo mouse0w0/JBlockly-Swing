@@ -1,7 +1,6 @@
 package team.unstudio.jblockly.core.component;
 
 import javafx.scene.control.ComboBox;
-import team.unstudio.jblockly.core.ValueInput;
 
 public class InputComboBox extends ComboBox<String> implements ValueInput<String>{
 

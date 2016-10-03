@@ -1,6 +1,4 @@
-package team.unstudio.jblockly.core;
-
-import team.unstudio.jblockly.core.component.BlockComponent;
+package team.unstudio.jblockly.core.component;
 
 public interface ValueInput<T> extends BlockComponent{
 

@@ -1,7 +1,6 @@
 package team.unstudio.jblockly.core.component;
 
 import javafx.scene.control.TextField;
-import team.unstudio.jblockly.core.ValueInput;
 
 public class InputTextField extends TextField implements ValueInput<String>{
 

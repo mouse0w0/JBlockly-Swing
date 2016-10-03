@@ -1,5 +1,7 @@
 package team.unstudio.jblockly.core;
 
+import team.unstudio.jblockly.core.component.ValueInput;
+
 public abstract class BlockInputDescriber {
 
 	private final String type;

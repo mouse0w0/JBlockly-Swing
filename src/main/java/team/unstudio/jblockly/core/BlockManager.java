@@ -24,19 +24,6 @@ public class BlockManager {
 		blocks.add(describer);
 	}
 	
-//	public JBlock loadBlock(JSONObject json){
-//		if(blocks.containsKey(json.getInteger("id"))){
-//			try {
-//				return blocks.get(json.getInteger("id")).newInstance();
-//			} catch (InstantiationException e) {
-//				e.printStackTrace();
-//			} catch (IllegalAccessException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		return null;
-//	}
-	
 	public void addGroup(BlockGroup group){
 		groups.add(group);
 	}
