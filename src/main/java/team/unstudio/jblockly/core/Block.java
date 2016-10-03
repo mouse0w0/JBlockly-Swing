@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.canvas.GraphicsContext;
+import team.unstudio.jblockly.core.component.BlockComponent;
 
 public class Block implements Cloneable{
 	

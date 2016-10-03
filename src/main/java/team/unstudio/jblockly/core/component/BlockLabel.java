@@ -1,7 +1,6 @@
 package team.unstudio.jblockly.core.component;
 
 import javafx.scene.control.Label;
-import team.unstudio.jblockly.core.BlockComponent;
 
 public class BlockLabel extends Label implements BlockComponent{
 

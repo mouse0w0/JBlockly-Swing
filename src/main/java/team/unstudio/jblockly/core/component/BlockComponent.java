@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.core;
+package team.unstudio.jblockly.core.component;
 
 public interface BlockComponent {
 

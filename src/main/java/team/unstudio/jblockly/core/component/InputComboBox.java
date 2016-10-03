@@ -1,9 +1,9 @@
 package team.unstudio.jblockly.core.component;
 
-import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import team.unstudio.jblockly.core.ValueInput;
 
-public class BlockTextField extends TextField implements ValueInput<String>{
+public class InputComboBox extends ComboBox<String> implements ValueInput<String>{
 
 	@Override
 	public AlignType getAlignType() {
@@ -49,12 +49,6 @@ public class BlockTextField extends TextField implements ValueInput<String>{
 
 	@Override
 	public String getName() {
-		// TODO 自动生成的方法存根
-		return null;
-	}
-
-	@Override
-	public String getValue() {
 		// TODO 自动生成的方法存根
 		return null;
 	}
