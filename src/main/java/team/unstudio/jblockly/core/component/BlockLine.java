@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team.unstudio.jblockly.core.Block;
+import team.unstudio.jblockly.core.BlockUtils;
 
 public class BlockLine{
 	
@@ -58,7 +59,11 @@ public class BlockLine{
 	}
 	
 	public void doLayout(){
-		
+		for(BlockComponent c:components){
+			int x = this.x;
+			c.setPoint(x, y);
+			x+=c.getWidth()+BlockUtils.HGAP;
+		}
 	}
 
 	public AlignType getAlign() {

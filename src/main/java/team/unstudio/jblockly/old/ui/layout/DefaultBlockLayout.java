@@ -11,8 +11,8 @@ import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import team.unstudio.jblockly.core.BlockUtils;
 import team.unstudio.jblockly.old.block.BlockDescriber.HeadType;
-import team.unstudio.jblockly.old.block.BlockUtils;
 import team.unstudio.jblockly.old.ui.block.Block;
 
 public class DefaultBlockLayout implements LayoutManager{

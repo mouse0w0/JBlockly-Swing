@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.geom.Area;
 
+import team.unstudio.jblockly.core.BlockUtils;
 import team.unstudio.jblockly.old.ui.block.Block;
 
 public class BlockInput implements IInput{

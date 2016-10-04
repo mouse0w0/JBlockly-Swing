@@ -1,4 +1,4 @@
-package team.unstudio.jblockly.old.block;
+package team.unstudio.jblockly.core;
 
 import java.awt.Font;
 
