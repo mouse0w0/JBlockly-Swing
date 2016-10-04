@@ -5,51 +5,49 @@ import javafx.scene.control.ComboBox;
 public class InputComboBox extends ComboBox<String> implements ValueInput<String>{
 
 	@Override
-	public AlignType getAlignType() {
-		// TODO 自动生成的方法存根
-		return null;
+	public double getX() {
+		return getLayoutX();
 	}
 
 	@Override
-	public void setAlignType(AlignType type) {
-		// TODO 自动生成的方法存根
-		
+	public double getY() {
+		return getLayoutY();
 	}
 
 	@Override
-	public int getX() {
-		// TODO 自动生成的方法存根
-		return 0;
+	public void setX(double x) {
+		setLayoutX(x);
 	}
 
 	@Override
-	public int getY() {
-		// TODO 自动生成的方法存根
-		return 0;
+	public void setY(double y) {
+		setLayoutY(y);
 	}
 
 	@Override
-	public void setX(int x) {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
-	public void setY(int y) {
-		// TODO 自动生成的方法存根
-		
-	}
-
-	@Override
-	public void setPoint(int x, int y) {
-		// TODO 自动生成的方法存根
-		
+	public void setPoint(double x, double y) {
+		setX(x);
+		setY(y);	
 	}
 
 	@Override
 	public String getName() {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
+	@Override
+	public void setName(String name) {
+		// TODO 自动生成的方法存根
+		
+	}
+
+	@Override
+	public String getInput() {
+		return getValue();
+	}
+
+	@Override
+	public void setInput(Object obj) {
+		setValue(obj.toString());
+	}
 }

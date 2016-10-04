@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.canvas.GraphicsContext;
-import team.unstudio.jblockly.core.component.BlockComponent;
+import team.unstudio.jblockly.core.component.BlockLine;
 
 public class Block implements Cloneable{
 	
@@ -49,7 +49,7 @@ public class Block implements Cloneable{
 	}
 	
 	private String message;
-	private final List<BlockComponent> components = new ArrayList<>();
+	private final List<BlockLine> lines = new ArrayList<>();
 	
 	public String getMessage() {
 		return message;
@@ -59,10 +59,11 @@ public class Block implements Cloneable{
 		this.message = message;
 	}
 	
-	public List<BlockComponent> getComponents() {
-		return components;
+	public void addLine(BlockLine line){
+		line.setParent(this);
+		lines.add(line);
 	}
-	
+
 	private boolean moveable = true;
 	private boolean disable = false;
 	private boolean editable = true;
@@ -169,6 +170,10 @@ public class Block implements Cloneable{
 	
 	public void dispose(){
 		//TODO:dispose
+	}
+	
+	public void doLayout(){
+		
 	}
 	
 	public void draw(GraphicsContext graphics){

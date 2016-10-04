@@ -2,17 +2,11 @@ package team.unstudio.jblockly.core.component;
 
 public interface BlockComponent {
 
-	public enum AlignType{
-		Left,Right,Centre
-	}
-	
-	AlignType getAlignType();
-	void setAlignType(AlignType type);
-	int getX();
-	int getY();
-	void setX(int x);
-	void setY(int y);
-	void setPoint(int x,int y);
+	double getX();
+	double getY();
+	void setX(double x);
+	void setY(double y);
+	void setPoint(double x, double y);
 	double getHeight();
 	double getWidth();
 }
