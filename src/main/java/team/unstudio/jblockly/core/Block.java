@@ -169,14 +169,17 @@ public class Block implements Cloneable{
 	}
 	
 	public void dispose(){
-		//TODO:dispose
+		for(BlockLine line:lines)line.dispose();
 	}
 	
 	public void doLayout(){
-		
+		int x=0,y=0;
+		for(BlockLine line:lines){
+			
+		}
 	}
 	
 	public void draw(GraphicsContext graphics){
-		
+		graphics.translate(x, y);
 	}
 }

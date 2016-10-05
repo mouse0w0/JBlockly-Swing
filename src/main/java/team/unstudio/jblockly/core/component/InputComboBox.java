@@ -1,6 +1,7 @@
 package team.unstudio.jblockly.core.component;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.Pane;
 
 public class InputComboBox extends ComboBox<String> implements ValueInput<String>{
 
@@ -30,15 +31,16 @@ public class InputComboBox extends ComboBox<String> implements ValueInput<String
 		setY(y);	
 	}
 
+	private String name;
+
 	@Override
 	public String getName() {
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setName(String name) {
-		// TODO 自动生成的方法存根
-		
+		this.name = name;
 	}
 
 	@Override
@@ -49,5 +51,11 @@ public class InputComboBox extends ComboBox<String> implements ValueInput<String
 	@Override
 	public void setInput(Object obj) {
 		setValue(obj.toString());
+	}
+	
+	@Override
+	public void dispose() {
+		setVisible(false);
+		((Pane)getParent()).getChildren().remove(this);
 	}
 }

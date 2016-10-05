@@ -9,4 +9,5 @@ public interface BlockComponent {
 	void setPoint(double x, double y);
 	double getHeight();
 	double getWidth();
+	void dispose();
 }

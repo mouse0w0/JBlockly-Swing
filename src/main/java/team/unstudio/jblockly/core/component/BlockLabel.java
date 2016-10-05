@@ -1,6 +1,7 @@
 package team.unstudio.jblockly.core.component;
 
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 
 public class BlockLabel extends Label implements BlockComponent{
 
@@ -28,5 +29,11 @@ public class BlockLabel extends Label implements BlockComponent{
 	public void setPoint(double x, double y) {
 		setX(x);
 		setY(y);	
+	}
+
+	@Override
+	public void dispose() {
+		setVisible(false);
+		((Pane)getParent()).getChildren().remove(this);
 	}
 }

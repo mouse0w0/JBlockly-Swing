@@ -14,8 +14,8 @@ public class BlockLine{
 	
 	private AlignType align = AlignType.Left;
 	private final List<BlockComponent> components = new ArrayList<>();
-	private int x,y,height,width;
-	private Block parent;
+	private int x,y;
+	private Block parent,child=null;
 
 	public int getX() {
 		return x;
@@ -39,11 +39,15 @@ public class BlockLine{
 	}
 
 	public double getHeight() {
+		double height = 0;
+		for(BlockComponent component:components) if(component.getHeight()>height) height = component.getHeight();
 		return height;
 	}
 
 	public double getWidth() {
-		return width;
+		double width = 0;
+		for(BlockComponent component:components) width += component.getWidth() + BlockUtils.HGAP;
+		return width-BlockUtils.HGAP;
 	}
 	
 	public Block getParent() {
@@ -72,5 +76,17 @@ public class BlockLine{
 
 	public void setAlign(AlignType align) {
 		this.align = align;
+	}
+
+	public Block getChild() {
+		return child;
+	}
+
+	public void setChild(Block child) {
+		throw new UnsupportedOperationException("Can't add Block in BlockLine");
+	}
+	
+	public void dispose(){
+		for(BlockComponent component:components) component.dispose();
 	}
 }
