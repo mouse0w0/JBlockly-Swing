@@ -178,7 +178,7 @@ public class Block implements Cloneable{
 		this.y = y;
 	}
 	
-	public void setPoint(int x,int y){
+	public void setLocation(int x,int y){
 		this.x = x;
 		this.y = y;
 	}
