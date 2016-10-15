@@ -12,6 +12,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+    <licenses>
+        <license>
+            <name>AGPLv3</name>
+            <url>https://www.gnu.org/licenses/agpl.html</url>
+        </license>
+    </licenses>
 
 	<repositories>
 		<repository>
