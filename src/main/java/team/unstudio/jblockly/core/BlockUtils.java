@@ -51,5 +51,5 @@ public class BlockUtils {
 	public static final int HGAP = 10;
 	public static final int MIN_TEXT_GAP = 10;
 	
-	public static final Font DEFAULT_FONT = new Font("黑体", Font.BOLD, 14);
+	public static final Font DEFAULT_FONT = new Font(null, Font.BOLD, 14);
 }
