@@ -109,18 +109,68 @@ public class BlockRender {
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
 	 * ConnectionType为None,Left,Bottom时的渲染路径
 	 */
-	public static final String BLOCK_TOP = "M 0,0";
+	public static final String BLOCK_TOP = "M 0,0 ";
 	
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
-	 * ConnectionType为TopAndBottom或Top时的渲染路径
+	 * ConnectionType为TopAndBottom,Top时的渲染路径
 	 */
-	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 5 H 20 V 0";
+	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 6 H 20 V 0 ";
 	
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
 	 * ConnectionType为Left时的渲染路径
 	 */
-	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0";
+	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 ";
+	
+	/**
+	 * 获取代码块插槽渲染路径
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static String getBlockInsertSlot(int x,int y,int width,int height){
+		return new StringBuilder().append("V ").append(y+9).append(" H ").append(x+width-6).append(" V ").append(y+20).append(" H ").append(x+width).append(" ").toString();
+	}
+	
+	/**
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
+	 * ConnectionType为Bottom,TopAndBottom时的渲染路径
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static String getBlockBottomConnection(int x,int y,int width,int height){
+		return new StringBuilder().append("V ").append(y).append(" H ").append(x+19).append(" V ").append(y+5).append(" H ").append(x+10).append(" V ").append(y).append(" H ").append(x).append(" Z ").toString();
+	}
+	
+	/**
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
+	 * ConnectionType为None,Top,Left时的渲染路径
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static String getBlockBottom(int x,int y,int width,int height){
+		return new StringBuilder().append("V ").append(y).append(" H ").append(x).append(" Z ").toString();
+	}
+	
+	/**
+	 * 获取代码块分支渲染路径
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static String getBlockBranch(int x,int y,int width,int height){
+		return new StringBuilder().append("V ").append(y).append(" H ").append(x+29).append(" V ").append(y+5).append(" H ").append(x+20).append(" V ").append(y).append(" H ").append(x+10).append(" V ").append(y+height+20).append(" H ").append(x+width).append(" ").toString();
+	}
 	
 }
