@@ -8,6 +8,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+/**
+ * 代码块工作空间
+ */
 public class BlockWorkspace extends Pane{
 	
 	private final List<Block> blocks = new ArrayList<>();

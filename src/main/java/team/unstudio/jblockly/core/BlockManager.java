@@ -3,6 +3,9 @@ package team.unstudio.jblockly.core;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 代码块管理器
+ */
 public class BlockManager {
 	
 	public static final BlockManager INSTANCE = new BlockManager();

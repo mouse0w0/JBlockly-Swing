@@ -11,9 +11,17 @@ import javafx.scene.shape.PathElement;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.VLineTo;
 
+/**
+ * 代码块渲染器
+ */
 public class BlockRender {
 
-	public Path getPathFromSVG(String svg){
+	/**
+	 * 将SVG路径转换为{@link javafx.scene.shape.Path}
+	 * @param svg
+	 * @return
+	 */
+	public static Path getPathFromSVG(String svg){
 		Path path = new Path();
 		int i=0;
 		while(i<svg.length()){
@@ -30,7 +38,12 @@ public class BlockRender {
 		return path;
 	}
 	
-	public PathElement[] getPathElementFromSVG(String svg){
+	/**
+	 * 将SVG路径转换为{@link javafx.scene.shape.PathElement}
+	 * @param svg
+	 * @return
+	 */
+	public static PathElement[] getPathElementFromSVG(String svg){
 		
 		String args[] = svg.substring(1).replaceAll(",", " ").split(" ");
 		double points[] = new double[args.length];
@@ -91,4 +104,23 @@ public class BlockRender {
 				return new PathElement[0];
 		}
 	}
+
+	/**
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
+	 * ConnectionType为None,Left,Bottom时的渲染路径
+	 */
+	public static final String BLOCK_TOP = "M 0,0";
+	
+	/**
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
+	 * ConnectionType为TopAndBottom或Top时的渲染路径
+	 */
+	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 5 H 20 V 0";
+	
+	/**
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
+	 * ConnectionType为Left时的渲染路径
+	 */
+	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0";
+	
 }

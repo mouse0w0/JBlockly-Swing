@@ -6,8 +6,14 @@ import java.util.List;
 import javafx.scene.canvas.GraphicsContext;
 import team.unstudio.jblockly.core.component.BlockLine;
 
+/**
+ * 代码块
+ */
 public class Block implements Cloneable{
 	
+	/**
+	 * 布局方式
+	 */
 	public enum LayoutType{
 		Automatic,External,Inline
 	}
