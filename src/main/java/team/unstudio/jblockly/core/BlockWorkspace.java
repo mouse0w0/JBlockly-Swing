@@ -33,8 +33,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
-/**
- * 代码块工作空间
+/*
+ * BlockWorkspace
  */
 public class BlockWorkspace extends Pane{
 	

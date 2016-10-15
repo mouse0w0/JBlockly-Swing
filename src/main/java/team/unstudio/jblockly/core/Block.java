@@ -31,13 +31,16 @@ import java.util.List;
 import javafx.scene.canvas.GraphicsContext;
 import team.unstudio.jblockly.core.component.BlockLine;
 
-/**
- * 代码块
+/*
+ * Code block
  */
 public class Block implements Cloneable{
 	
 	/**
-	 * 布局方式
+	 * LayoutType:
+	 *   Automatic: xxxx
+	 *   External: xxxx
+	 *   Inline: xxxx
 	 */
 	public enum LayoutType{
 		Automatic,External,Inline
