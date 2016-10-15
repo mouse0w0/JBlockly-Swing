@@ -46,68 +46,71 @@ import team.unstudio.jblockly.old.ui.BlockMenu;
 import team.unstudio.jblockly.old.ui.BlockWorkspace;
 import team.unstudio.jblockly.old.ui.layout.DefaultBlockLayout;
 
-public class Block extends JPanel{
+public class Block extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 	private final BlockDescriber describer;
-	
+
 	private BlockWorkspace workspace;
 	private BlockInput parent;
 	private Block nextBlock;
 	private List<IInput> inputs = new ArrayList<>();
-	
+
 	private boolean editable = true;
 	private boolean moveable = true;
 	private boolean disable = false;
 	private boolean folded = false;
 	private String tooltip = null;
-	
-	private boolean dragging = false,selected = false,onlyline = false;
-	private int xOld,yOld;
-	
+
+	private boolean dragging = false, selected = false, onlyline = false;
+	private int xOld, yOld;
+
 	public Block(BlockDescriber describer) {
 		this.describer = describer;
-		
+
 		setLayout(new DefaultBlockLayout());
 		setOpaque(false);
-		
+
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				if(e.getButton() == MouseEvent.BUTTON1&&moveable){
-					int x=getX(),y=getY();
-					Container parent = getParent(),c = getParent();
-					while(!(c instanceof BlockWorkspace)){
-						x+=c.getX();
-						y+=c.getY();
-						c=c.getParent();
+				if (e.getButton() == MouseEvent.BUTTON1 && moveable) {
+					int x = getX(), y = getY();
+					Container parent = getParent(), c = getParent();
+					while (!(c instanceof BlockWorkspace)) {
+						x += c.getX();
+						y += c.getY();
+						c = c.getParent();
 					}
 					xOld = e.getXOnScreen() - x;
 					yOld = e.getYOnScreen() - y;
-					
+
 					dragging = true;
 					setLocation(x, y);
 					workspace.setDragging(Block.this);
 					parent.revalidate();
-				}else if(e.getButton() == MouseEvent.BUTTON3){
+				} else if (e.getButton() == MouseEvent.BUTTON3) {
 					BlockMenu.INSTANCE.show(Block.this, e.getX(), e.getY());
 				}
 			}
-			
+
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-				if(!dragging) return;
-				
+				if (!dragging)
+					return;
+
 				dragging = false;
 				workspace.setDragging(null);
-				workspace.repaint();;
+				workspace.repaint();
+				;
 			}
 		});
 		addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				if(dragging) setLocation(e.getXOnScreen() - xOld, e.getYOnScreen() - yOld);
+				if (dragging)
+					setLocation(e.getXOnScreen() - xOld, e.getYOnScreen() - yOld);
 			}
 		});
 	}
@@ -115,13 +118,14 @@ public class Block extends JPanel{
 	public BlockDescriber getBlockDescriber() {
 		return describer;
 	}
-	
+
 	@Override
 	public void setLayout(LayoutManager mgr) {
-		if(!(mgr instanceof DefaultBlockLayout)) throw new IllegalArgumentException("Layout type must be DefaultBlockLayout");
+		if (!(mgr instanceof DefaultBlockLayout))
+			throw new IllegalArgumentException("Layout type must be DefaultBlockLayout");
 		super.setLayout(mgr);
 	}
-	
+
 	@Override
 	public DefaultBlockLayout getLayout() {
 		return (DefaultBlockLayout) super.getLayout();
@@ -182,7 +186,7 @@ public class Block extends JPanel{
 	public void setFolded(boolean folded) {
 		this.folded = folded;
 	}
-	
+
 	public boolean isSelected() {
 		return selected;
 	}
@@ -190,7 +194,7 @@ public class Block extends JPanel{
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}
-	
+
 	public BlockInput getParentInput() {
 		return parent;
 	}
@@ -198,7 +202,7 @@ public class Block extends JPanel{
 	public void setParentInput(BlockInput parent) {
 		this.parent = parent;
 	}
-	
+
 	public IInput[] getInputs() {
 		return inputs.toArray(new IInput[0]);
 	}
@@ -210,19 +214,20 @@ public class Block extends JPanel{
 	public void setOnlyline(boolean onlyline) {
 		this.onlyline = onlyline;
 	}
-	
-	//Render
-	
+
+	// Render
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
-		
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
 		g2d.setColor(describer.getColor());
 	}
-	
-	protected void paintShadow(Graphics2D g,List<Line2D> darkShadow) {
+
+	protected void paintShadow(Graphics2D g, List<Line2D> darkShadow) {
 		g.setColor(describer.getColor().darker());
-		for(Line2D line:darkShadow) g.draw(line);
+		for (Line2D line : darkShadow)
+			g.draw(line);
 	}
 }

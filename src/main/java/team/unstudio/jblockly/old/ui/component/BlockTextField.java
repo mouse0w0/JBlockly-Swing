@@ -32,10 +32,10 @@ import javax.swing.JTextField;
 import team.unstudio.jblockly.old.block.IInput;
 import team.unstudio.jblockly.old.block.InputDescriber;
 
-public class BlockTextField extends JTextField implements IInput{
+public class BlockTextField extends JTextField implements IInput {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	public String value() {
 		return getText();
@@ -58,5 +58,5 @@ public class BlockTextField extends JTextField implements IInput{
 	public void setTextPoint(Point point) {
 		textPoint = point;
 	}
-	
+
 }

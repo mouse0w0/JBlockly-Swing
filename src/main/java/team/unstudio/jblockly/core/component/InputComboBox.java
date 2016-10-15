@@ -28,7 +28,7 @@ package team.unstudio.jblockly.core.component;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.Pane;
 
-public class InputComboBox extends ComboBox<String> implements ValueInput<String>{
+public class InputComboBox extends ComboBox<String> implements ValueInput<String> {
 
 	@Override
 	public double getX() {
@@ -53,7 +53,7 @@ public class InputComboBox extends ComboBox<String> implements ValueInput<String
 	@Override
 	public void setPoint(double x, double y) {
 		setX(x);
-		setY(y);	
+		setY(y);
 	}
 
 	private String name;
@@ -77,10 +77,10 @@ public class InputComboBox extends ComboBox<String> implements ValueInput<String
 	public void setInput(Object obj) {
 		setValue(obj.toString());
 	}
-	
+
 	@Override
 	public void dispose() {
 		setVisible(false);
-		((Pane)getParent()).getChildren().remove(this);
+		((Pane) getParent()).getChildren().remove(this);
 	}
 }

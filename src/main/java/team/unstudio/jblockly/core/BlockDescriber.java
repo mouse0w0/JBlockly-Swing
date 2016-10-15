@@ -31,28 +31,25 @@ import javafx.scene.paint.Color;
  * BlockDescriber
  */
 public class BlockDescriber {
-	
+
 	/**
-	 * ConnectionType:
-	 *   None: xxxx
-	 *   Left: xxxx
-	 *   TopAndBottom: xxxx
-	 *   Top: xxxx
-	 *   Bottom: xxxx
+	 * ConnectionType: None: xxxx Left: xxxx TopAndBottom: xxxx Top: xxxx
+	 * Bottom: xxxx
 	 */
-	public enum ConnectionType{
-		None,Left,TopAndBottom,Top,Bottom
+	public enum ConnectionType {
+		None, Left, TopAndBottom, Top, Bottom
 	}
-	
+
 	private final String name;
 	private Color color = new Color(1.0, 1.0, 1.0, 1.0);
 	private ConnectionType connectionType = ConnectionType.None;
 	private String message;
 	private String tooltip;
 	private BlockInputDescriber[] inputs;
-	
+
 	public BlockDescriber(String name) {
-		if(name == null||name.isEmpty()) throw new IllegalArgumentException();
+		if (name == null || name.isEmpty())
+			throw new IllegalArgumentException();
 		this.name = name;
 	}
 

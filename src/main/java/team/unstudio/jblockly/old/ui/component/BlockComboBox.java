@@ -32,7 +32,7 @@ import javax.swing.JComboBox;
 import team.unstudio.jblockly.old.block.IInput;
 import team.unstudio.jblockly.old.block.InputDescriber;
 
-public class BlockComboBox extends JComboBox<String> implements IInput{
+public class BlockComboBox extends JComboBox<String> implements IInput {
 
 	private static final long serialVersionUID = 1L;
 
