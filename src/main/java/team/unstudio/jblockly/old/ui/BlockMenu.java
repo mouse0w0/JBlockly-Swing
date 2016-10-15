@@ -36,28 +36,27 @@ import javax.swing.JPopupMenu;
 import team.unstudio.jblockly.old.ui.block.JBlock;
 import team.unstudio.jblockly.old.ui.component.JBlockInsert;
 
-public class BlockMenu extends JPopupMenu{
+public class BlockMenu extends JPopupMenu {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final BlockMenu INSTANCE = new BlockMenu();
-	
+
 	public BlockMenu() {
 		{
 			JMenuItem menuItem = new JMenuItem("删除块");
 			menuItem.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Container p = getInvoker().getParent();
 
-					if(getInvoker() instanceof JBlock){
+					if (getInvoker() instanceof JBlock) {
 						JBlock c = (JBlock) getInvoker();
 						p.remove(c);
 						p.revalidate();
 						p.repaint();
-					}
-					else if(getInvoker() instanceof JBlockInsert){
+					} else if (getInvoker() instanceof JBlockInsert) {
 						JBlockInsert c = (JBlockInsert) getInvoker();
 						p.remove(c);
 						p.revalidate();
@@ -67,17 +66,18 @@ public class BlockMenu extends JPopupMenu{
 			});
 			add(menuItem);
 		}
-			
+
 		{
 			JMenuItem menuItem = new JMenuItem("添加注释");
 			menuItem.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					((JBlock)getInvoker()).setToolTipText(JOptionPane.showInputDialog(null, "请输入注释.", "注释", JOptionPane.INFORMATION_MESSAGE));
+					((JBlock) getInvoker()).setToolTipText(
+							JOptionPane.showInputDialog(null, "请输入注释.", "注释", JOptionPane.INFORMATION_MESSAGE));
 				}
 			});
 			add(menuItem);
-		}	
+		}
 	}
 }

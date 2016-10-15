@@ -28,7 +28,7 @@ package team.unstudio.jblockly.core.component;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
-public class InputTextField extends TextField implements ValueInput<String>{
+public class InputTextField extends TextField implements ValueInput<String> {
 
 	@Override
 	public double getX() {
@@ -53,9 +53,9 @@ public class InputTextField extends TextField implements ValueInput<String>{
 	@Override
 	public void setPoint(double x, double y) {
 		setX(x);
-		setY(y);	
+		setY(y);
 	}
-	
+
 	private String name;
 
 	@Override
@@ -68,7 +68,6 @@ public class InputTextField extends TextField implements ValueInput<String>{
 		this.name = name;
 	}
 
-
 	@Override
 	public String getInput() {
 		return getText();
@@ -78,10 +77,10 @@ public class InputTextField extends TextField implements ValueInput<String>{
 	public void setInput(Object obj) {
 		setText(obj.toString());
 	}
-	
+
 	@Override
 	public void dispose() {
 		setVisible(false);
-		((Pane)getParent()).getChildren().remove(this);
+		((Pane) getParent()).getChildren().remove(this);
 	}
 }

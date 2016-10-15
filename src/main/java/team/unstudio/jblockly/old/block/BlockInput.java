@@ -32,13 +32,13 @@ import java.awt.geom.Area;
 import team.unstudio.jblockly.core.BlockUtils;
 import team.unstudio.jblockly.old.ui.block.Block;
 
-public class BlockInput implements IInput{
-	
-	public enum InputType{
-		BRANCH,INSERT_SLOT,INSERT_END_SLOT,NEXT
+public class BlockInput implements IInput {
+
+	public enum InputType {
+		BRANCH, INSERT_SLOT, INSERT_END_SLOT, NEXT
 	}
-	
-	private Block block,parent;
+
+	private Block block, parent;
 	private Area area;
 	private Point point;
 	private InputType type;
@@ -72,7 +72,7 @@ public class BlockInput implements IInput{
 		this.point = point;
 	}
 
-	public void setPoint(int x, int y){
+	public void setPoint(int x, int y) {
 		this.point = new Point(x, y);
 	}
 
@@ -91,18 +91,18 @@ public class BlockInput implements IInput{
 	public void setType(InputType type) {
 		this.type = type;
 	}
-	
+
 	private final InputDescriber describer;
-	
+
 	public BlockInput(InputDescriber describer) {
 		this.describer = describer;
 	}
-	
+
 	@Override
 	public InputDescriber getDescriber() {
 		return describer;
 	}
-	
+
 	private Point textPoint;
 
 	@Override
@@ -117,6 +117,8 @@ public class BlockInput implements IInput{
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension((int)(block.getFontMetrics(BlockUtils.DEFAULT_FONT).getStringBounds(describer.getDescription(), block.getGraphics()).getWidth())+BlockUtils.MIN_TEXT_GAP+block.getPreferredSize().width,block.getPreferredSize().height);
+		return new Dimension((int) (block.getFontMetrics(BlockUtils.DEFAULT_FONT)
+				.getStringBounds(describer.getDescription(), block.getGraphics()).getWidth()) + BlockUtils.MIN_TEXT_GAP
+				+ block.getPreferredSize().width, block.getPreferredSize().height);
 	}
 }

@@ -32,7 +32,7 @@ import team.unstudio.jblockly.old.block.InputDescriber;
 public class BlockDescriber {
 
 	public enum HeadType {
-		NEXT,INSERT,NONE;
+		NEXT, INSERT, NONE;
 	}
 
 	private final String name;
@@ -40,9 +40,10 @@ public class BlockDescriber {
 	private HeadType headType = HeadType.NEXT;
 	private String message;
 	private InputDescriber inputs[];
-	
+
 	public BlockDescriber(String name) {
-		if(name == null||name.isEmpty()) throw new IllegalArgumentException();
+		if (name == null || name.isEmpty())
+			throw new IllegalArgumentException();
 		this.name = name;
 	}
 
@@ -65,20 +66,21 @@ public class BlockDescriber {
 	public HeadType getHeadType() {
 		return headType;
 	}
-	
-	public static class Builder{
-		
+
+	public static class Builder {
+
 		private final String name;
 		private Color color = new Color(255, 255, 255);
 		private HeadType blockType = HeadType.NEXT;
 		private String message = "";
 		private InputDescriber inputs[] = new InputDescriber[0];
-		
+
 		public Builder(String name) {
-			if(name == null||name.isEmpty()) throw new IllegalArgumentException();
+			if (name == null || name.isEmpty())
+				throw new IllegalArgumentException();
 			this.name = name;
 		}
-		
+
 		public Builder setColor(Color color) {
 			this.color = color;
 			return this;
@@ -89,7 +91,7 @@ public class BlockDescriber {
 			return this;
 		}
 
-		public Builder setInputs(InputDescriber ...inputs) {
+		public Builder setInputs(InputDescriber... inputs) {
 			this.inputs = inputs;
 			return this;
 		}
@@ -98,8 +100,8 @@ public class BlockDescriber {
 			this.blockType = blockType;
 			return this;
 		}
-		
-		public BlockDescriber done(){
+
+		public BlockDescriber done() {
 			BlockDescriber describer = new BlockDescriber(name);
 			describer.color = color;
 			describer.headType = blockType;
