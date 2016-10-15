@@ -27,13 +27,18 @@ package team.unstudio.jblockly.core;
 
 import javafx.scene.paint.Color;
 
-/**
- * 代码块描述器
+/*
+ * BlockDescriber
  */
 public class BlockDescriber {
 	
 	/**
-	 * 代码块连接方式
+	 * ConnectionType:
+	 *   None: xxxx
+	 *   Left: xxxx
+	 *   TopAndBottom: xxxx
+	 *   Top: xxxx
+	 *   Bottom: xxxx
 	 */
 	public enum ConnectionType{
 		None,Left,TopAndBottom,Top,Bottom

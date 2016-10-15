@@ -36,13 +36,13 @@ import javafx.scene.shape.PathElement;
 import javafx.scene.shape.QuadCurveTo;
 import javafx.scene.shape.VLineTo;
 
-/**
- * 代码块渲染器
+/*
+ * BlockRender
  */
 public class BlockRender {
 
 	/**
-	 * 将SVG路径转换为{@link javafx.scene.shape.Path}
+	 * from SVG path to{@link javafx.scene.shape.Path}
 	 * @param svg
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class BlockRender {
 	}
 	
 	/**
-	 * 将SVG路径转换为{@link javafx.scene.shape.PathElement}
+	 * from SVG path to{@link javafx.scene.shape.PathElement}
 	 * @param svg
 	 * @return
 	 */
@@ -132,24 +132,24 @@ public class BlockRender {
 
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
-	 * ConnectionType为None,Left,Bottom时的渲染路径
+	 * ConnectionType is None,Left,Bottom's path
 	 */
 	public static final String BLOCK_TOP = "M 0,0 ";
 	
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
-	 * ConnectionType为TopAndBottom,Top时的渲染路径
+	 * ConnectionType is TopAndBottom,Top's path
 	 */
 	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 6 H 20 V 0 ";
 	
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
-	 * ConnectionType为Left时的渲染路径
+	 * ConnectionType is Left's path
 	 */
 	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 ";
 	
 	/**
-	 * 获取代码块插槽渲染路径
+	 * get block path
 	 * @param x
 	 * @param y
 	 * @param width
@@ -162,7 +162,7 @@ public class BlockRender {
 	
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
-	 * ConnectionType为Bottom,TopAndBottom时的渲染路径
+	 * ConnectionType is Bottom,TopAndBottom's path
 	 * @param x
 	 * @param y
 	 * @param width
@@ -175,7 +175,7 @@ public class BlockRender {
 	
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType}
-	 * ConnectionType为None,Top,Left时的渲染路径
+	 * ConnectionType is None,Top,Left's path
 	 * @param x
 	 * @param y
 	 * @param width
@@ -187,7 +187,7 @@ public class BlockRender {
 	}
 	
 	/**
-	 * 获取代码块分支渲染路径
+	 * get block fork's path
 	 * @param x
 	 * @param y
 	 * @param width
