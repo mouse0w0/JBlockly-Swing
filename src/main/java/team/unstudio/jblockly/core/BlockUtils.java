@@ -27,6 +27,7 @@ package team.unstudio.jblockly.core;
 
 import java.awt.Font;
 
+@Deprecated
 public class BlockUtils {
 
 	public static final int INSERT_OFFSET_Y = 10;

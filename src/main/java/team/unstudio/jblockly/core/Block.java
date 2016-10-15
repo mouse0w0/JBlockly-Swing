@@ -209,7 +209,7 @@ public class Block implements Cloneable{
 	public void doLayout(){
 		int x=0,y=0;
 		for(BlockLine line:lines){
-			
+			line.doLayout();
 		}
 	}
 	
