@@ -31,6 +31,7 @@ import java.util.List;
 import team.unstudio.jblockly.core.Block;
 import team.unstudio.jblockly.core.BlockUtils;
 
+@SuppressWarnings("deprecation")
 public class BlockLine {
 
 	public enum AlignType {

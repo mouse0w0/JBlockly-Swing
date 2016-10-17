@@ -204,10 +204,11 @@ public class Block implements Cloneable {
 			line.dispose();
 	}
 
+	@SuppressWarnings("unused")
 	public void doLayout() {
 		int x = 0, y = 0;
 		for (BlockLine line : lines) {
-
+			// TODO Layout line
 		}
 	}
 
