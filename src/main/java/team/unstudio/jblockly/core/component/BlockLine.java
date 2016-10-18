@@ -31,7 +31,6 @@ import java.util.List;
 import team.unstudio.jblockly.core.Block;
 import team.unstudio.jblockly.core.BlockUtils;
 
-@SuppressWarnings("deprecation")
 public class BlockLine {
 
 	public enum AlignType {
@@ -41,7 +40,8 @@ public class BlockLine {
 	private AlignType align = AlignType.Left;
 	private final List<BlockComponent> components = new ArrayList<>();
 	private int x, y;
-	private Block parent, child = null;
+	protected int childX,childY;
+	protected Block parent, child = null;
 
 	public int getX() {
 		return x;
@@ -73,10 +73,10 @@ public class BlockLine {
 	}
 
 	public double getWidth() {
-		double width = 0;
+		double width = BlockUtils.HGAP;
 		for (BlockComponent component : components)
 			width += component.getWidth() + BlockUtils.HGAP;
-		return width - BlockUtils.HGAP;
+		return width;
 	}
 
 	public Block getParent() {
@@ -92,11 +92,16 @@ public class BlockLine {
 	}
 
 	public void doLayout() {
+		int y = this.y+BlockUtils.VGAP,x = this.x + BlockUtils.HGAP;
 		for (BlockComponent c : components) {
-			int x = this.x;
 			c.setPoint(x, y);
 			x += c.getWidth() + BlockUtils.HGAP;
 		}
+		if(child!=null){
+			child.setX(childX);
+			child.setY(childY);
+		}
+		//TODO: Support align right.
 	}
 
 	public AlignType getAlign() {
@@ -113,6 +118,22 @@ public class BlockLine {
 
 	public void setChild(Block child) {
 		throw new UnsupportedOperationException("Can't add Block in BlockLine");
+	}
+
+	public int getChildX() {
+		return childX;
+	}
+
+	public void setChildX(int childX) {
+		this.childX = childX;
+	}
+
+	public int getChildY() {
+		return childY;
+	}
+
+	public void setChildY(int childY) {
+		this.childY = childY;
 	}
 
 	public void dispose() {

@@ -25,6 +25,12 @@
 
 package team.unstudio.jblockly.core.component;
 
+import team.unstudio.jblockly.core.Block;
+
 public class BlockLineBranch extends BlockLine {
 
+	@Override
+	public void setChild(Block child) {
+		this.child = child;
+	}
 }

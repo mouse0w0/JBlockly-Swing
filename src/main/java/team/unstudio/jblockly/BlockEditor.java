@@ -35,6 +35,7 @@ public class BlockEditor extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setScene(new Scene(new BlockWorkspace()));
+		primaryStage.setTitle("JBlockly Editor");
 		primaryStage.show();
 	}
 

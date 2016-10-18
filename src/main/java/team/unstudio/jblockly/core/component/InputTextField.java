@@ -74,8 +74,8 @@ public class InputTextField extends TextField implements ValueInput<String> {
 	}
 
 	@Override
-	public void setInput(Object obj) {
-		setText(obj.toString());
+	public void setInput(String obj) {
+		setText(obj);
 	}
 
 	@Override

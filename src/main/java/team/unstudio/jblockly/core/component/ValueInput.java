@@ -33,6 +33,6 @@ public interface ValueInput<T> extends BlockComponent {
 
 	T getInput();
 
-	void setInput(Object obj);
+	void setInput(T obj);
 
 }
