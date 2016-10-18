@@ -28,7 +28,8 @@ package team.unstudio.jblockly.core.event;
 import java.util.EventListener;
 
 /**
- * A simple interface for tagging all EventListeners.
+ * A simple interface for tagging all {@linkplain java.util.EventListener
+ * EventListener}.
  * 
  * @since 1.0.0
  */
