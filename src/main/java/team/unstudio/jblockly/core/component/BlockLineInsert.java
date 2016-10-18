@@ -33,5 +33,5 @@ public class BlockLineInsert extends BlockLine {
 	public void setChild(Block child) {
 		this.child = child;
 	}
-	
+
 }

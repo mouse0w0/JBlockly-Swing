@@ -40,7 +40,7 @@ public class BlockLine {
 	private AlignType align = AlignType.Left;
 	private final List<BlockComponent> components = new ArrayList<>();
 	private int x, y;
-	protected int childX,childY;
+	protected int childX, childY;
 	protected Block parent, child = null;
 
 	public int getX() {
@@ -92,16 +92,16 @@ public class BlockLine {
 	}
 
 	public void doLayout() {
-		int y = this.y+BlockUtils.VGAP,x = this.x + BlockUtils.HGAP;
+		int y = this.y + BlockUtils.VGAP, x = this.x + BlockUtils.HGAP;
 		for (BlockComponent c : components) {
 			c.setPoint(x, y);
 			x += c.getWidth() + BlockUtils.HGAP;
 		}
-		if(child!=null){
+		if (child != null) {
 			child.setX(childX);
 			child.setY(childY);
 		}
-		//TODO: Support align right.
+		// TODO: Support align right.
 	}
 
 	public AlignType getAlign() {

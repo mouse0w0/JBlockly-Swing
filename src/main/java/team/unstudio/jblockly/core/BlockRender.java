@@ -145,17 +145,20 @@ public class BlockRender {
 	}
 
 	/**
-	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is None,Left,Bottom's path
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
+	 * None,Left,Bottom's path
 	 */
 	public static final String BLOCK_TOP = "M 0,0 ";
 
 	/**
-	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is TopAndBottom,Top's path
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
+	 * TopAndBottom,Top's path
 	 */
 	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 6 H 20 V 0 ";
 
 	/**
-	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is Left's path
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
+	 * Left's path
 	 */
 	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 ";
 
@@ -174,7 +177,8 @@ public class BlockRender {
 	}
 
 	/**
-	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is Bottom,TopAndBottom's path
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
+	 * Bottom,TopAndBottom's path
 	 * 
 	 * @param x
 	 * @param y
@@ -188,7 +192,8 @@ public class BlockRender {
 	}
 
 	/**
-	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is None,Top,Left's path
+	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
+	 * None,Top,Left's path
 	 * 
 	 * @param x
 	 * @param y
