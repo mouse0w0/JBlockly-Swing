@@ -38,7 +38,7 @@ public class BlockLine {
 	}
 
 	private AlignType align = AlignType.Left;
-	private final List<BlockComponent> components = new ArrayList<>();
+	private final List<BlockComponent> components = new ArrayList<BlockComponent>();
 	private int x, y;
 	protected int childX, childY;
 	protected Block parent, child = null;

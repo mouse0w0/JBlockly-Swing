@@ -40,18 +40,20 @@ public class BlockManager {
 	public static final BlockManager INSTANCE = new BlockManager();
 
 	/**
-	 * A list for all {@linkplain team.unstudio.jblockly.core.BlockDescriber BlockDescriber}
+	 * A list for all {@linkplain team.unstudio.jblockly.core.BlockDescriber
+	 * BlockDescriber}
 	 * 
 	 * @since 1.0.0
 	 */
-	private final List<BlockDescriber> blocks = new ArrayList<>();
+	private final List<BlockDescriber> blocks = new ArrayList<BlockDescriber>();
 
 	/**
-	 * A list for all {@linkplain team.unstudio.jblockly.core.BlockGroup BlockGroup}
+	 * A list for all {@linkplain team.unstudio.jblockly.core.BlockGroup
+	 * BlockGroup}
 	 * 
 	 * @since 1.0.0
 	 */
-	private final List<BlockGroup> groups = new ArrayList<>();
+	private final List<BlockGroup> groups = new ArrayList<BlockGroup>();
 
 	public BlockManager() {
 	}

@@ -38,7 +38,7 @@ import javafx.scene.paint.Color;
  */
 public class BlockWorkspace extends Pane {
 
-	private final List<Block> blocks = new ArrayList<>();
+	private final List<Block> blocks = new ArrayList<Block>();
 	private final Canvas canvas = new Canvas();
 
 	private Block selectBlock;

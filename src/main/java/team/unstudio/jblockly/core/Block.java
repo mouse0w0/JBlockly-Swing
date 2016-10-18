@@ -80,7 +80,7 @@ public class Block implements Cloneable {
 	}
 
 	private String message;
-	private final List<BlockLine> lines = new ArrayList<>();
+	private final List<BlockLine> lines = new ArrayList<BlockLine>();
 
 	public String getMessage() {
 		return message;
