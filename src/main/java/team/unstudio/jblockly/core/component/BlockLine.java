@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2016, Unknown Domain. All rights reserved.
- * GUN GPLv3. Use is subject to license terms.
+ * GUN AGPLv3. Use is subject to license terms.
  *
  *
  *
@@ -45,7 +45,7 @@ public class BlockLine {
 	private LineType line = LineType.None;
 	private final List<BlockComponent> components = new ArrayList<>();
 	private int x, y;
-	protected int childX,childY;
+	protected int childX, childY;
 	protected Block parent, child = null;
 
 	public int getX() {
@@ -106,6 +106,7 @@ public class BlockLine {
 		}else if(align == AlignType.Right){
 			//TODO: Support align right.
 		}
+		
 		if(child!=null) child.setLocation(childX, childY);
 	}
 

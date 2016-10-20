@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2016, Unknown Domain. All rights reserved.
- * GUN GPLv3. Use is subject to license terms.
+ * GUN AGPLv3. Use is subject to license terms.
  *
  *
  *
@@ -32,7 +32,7 @@ public class BlockGroup {
 
 	private String node[] = new String[0];
 	private String name;
-	private List<BlockDescriber> blocks = new ArrayList<>();
+	private List<BlockDescriber> blocks = new ArrayList<BlockDescriber>();
 
 	public String[] getNode() {
 		return node;

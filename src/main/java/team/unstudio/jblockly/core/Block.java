@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 2016, Unknown Domain. All rights reserved.
- * GUN GPLv3. Use is subject to license terms.
+ * GUN AGPLv3. Use is subject to license terms.
  *
  *
  *
@@ -85,7 +85,7 @@ public class Block implements Cloneable {
 	}
 
 	private String message;
-	private final List<BlockLine> lines = new ArrayList<>();
+	private final List<BlockLine> lines = new ArrayList<BlockLine>();
 
 	public String getMessage() {
 		return message;
