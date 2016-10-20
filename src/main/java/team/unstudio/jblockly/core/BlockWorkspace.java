@@ -75,7 +75,7 @@ public class BlockWorkspace extends Pane {
 
 	public void draw() {
 		GraphicsContext graphics = canvas.getGraphicsContext2D();
-		graphics.setFill(Color.WHITESMOKE);
+		graphics.setFill(Color.WHITE);
 		graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
 		blocks.forEach(block -> block.draw(graphics));

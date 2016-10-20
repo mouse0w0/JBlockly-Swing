@@ -61,4 +61,12 @@ public class BlockLabel extends Label implements BlockComponent {
 		setVisible(false);
 		((Pane) getParent()).getChildren().remove(this);
 	}
+
+	@Override
+	public boolean isEditable() {
+		return false;
+	}
+
+	@Override
+	public void setEditable(boolean editable) {}
 }

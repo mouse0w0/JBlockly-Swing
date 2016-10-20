@@ -36,8 +36,13 @@ public class BlockLine {
 	public enum AlignType {
 		Left, Right
 	}
+	
+	public enum LineType{
+		None, Branch, Insert
+	}
 
 	private AlignType align = AlignType.Left;
+	private LineType line = LineType.None;
 	private final List<BlockComponent> components = new ArrayList<>();
 	private int x, y;
 	protected int childX,childY;
@@ -59,7 +64,7 @@ public class BlockLine {
 		this.y = y;
 	}
 
-	public void setPoint(int x, int y) {
+	public void setLocation(int x, int y) {
 		setX(x);
 		setY(y);
 	}
@@ -92,16 +97,16 @@ public class BlockLine {
 	}
 
 	public void doLayout() {
-		int y = this.y+BlockUtils.VGAP,x = this.x + BlockUtils.HGAP;
-		for (BlockComponent c : components) {
-			c.setPoint(x, y);
-			x += c.getWidth() + BlockUtils.HGAP;
+		if(align==AlignType.Left){
+			int y = parent.getY()+this.y,x = parent.getX()+ this.x + BlockUtils.HGAP;
+			for (BlockComponent c : components) {
+				c.setPoint(x, y);
+				x += c.getWidth() + BlockUtils.HGAP;
+			}
+		}else if(align == AlignType.Right){
+			//TODO: Support align right.
 		}
-		if(child!=null){
-			child.setX(childX);
-			child.setY(childY);
-		}
-		//TODO: Support align right.
+		if(child!=null) child.setLocation(childX, childY);
 	}
 
 	public AlignType getAlign() {
@@ -117,7 +122,8 @@ public class BlockLine {
 	}
 
 	public void setChild(Block child) {
-		throw new UnsupportedOperationException("Can't add Block in BlockLine");
+		child.setParent(parent);
+		this.child = child;
 	}
 
 	public int getChildX() {
@@ -135,6 +141,20 @@ public class BlockLine {
 	public void setChildY(int childY) {
 		this.childY = childY;
 	}
+	
+	public void setChildLocation(int childX,int childY){
+		setChildX(childX);
+		setChildY(childY);
+	}
+
+	public LineType getLineType() {
+		return line;
+	}
+
+	public void setLineType(LineType line) {
+		this.line = line;
+	}
+	
 
 	public void dispose() {
 		for (BlockComponent component : components)

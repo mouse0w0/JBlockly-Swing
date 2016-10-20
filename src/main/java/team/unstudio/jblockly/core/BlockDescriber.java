@@ -25,8 +25,6 @@
 
 package team.unstudio.jblockly.core;
 
-import javafx.scene.paint.Color;
-
 /*
  * BlockDescriber
  */
@@ -41,7 +39,7 @@ public class BlockDescriber {
 	}
 
 	private final String name;
-	private Color color = new Color(1.0, 1.0, 1.0, 1.0);
+	private int color = 0XFFFFFF;
 	private ConnectionType connectionType = ConnectionType.None;
 	private String message;
 	private String tooltip;
@@ -57,7 +55,7 @@ public class BlockDescriber {
 		return name;
 	}
 
-	public Color getColor() {
+	public int getColor() {
 		return color;
 	}
 

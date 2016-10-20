@@ -46,7 +46,9 @@ public class BlockRender {
 	 * 
 	 * @param svg
 	 * @return
+	 * @deprecated {@link javafx.scene.canvas.GraphicsContext#appendSVGPath()}
 	 */
+	@Deprecated
 	public static Path getPathFromSVG(String svg) {
 		Path path = new Path();
 		int i = 0;
@@ -72,6 +74,7 @@ public class BlockRender {
 	 * @param svg
 	 * @return
 	 */
+	@Deprecated
 	public static PathElement[] getPathElementFromSVG(String svg) {
 
 		String args[] = svg.substring(1).replaceAll(",", " ").split(" ");
@@ -210,9 +213,9 @@ public class BlockRender {
 	 * @return
 	 */
 	public static String getBlockBranch(int x, int y, int width, int height) {
-		return new StringBuilder().append("V ").append(y).append(" H ").append(x + 29).append(" V ").append(y + 5)
-				.append(" H ").append(x + 20).append(" V ").append(y).append(" H ").append(x + 10).append(" V ")
-				.append(y + height + 20).append(" H ").append(x + width).append(" ").toString();
+		return new StringBuilder().append("V ").append(y) 
+				.append(" H ").append(x + 29).append(" V ").append(y + 5).append(" H ").append(x + 20).append(" V ").append(y)
+				.append(" H ").append(x + 10).append(" V ").append(y + height + 20).append(" H ").append(x + width).append(" ").toString();
 	}
 
 }

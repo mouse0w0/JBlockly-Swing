@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import team.unstudio.jblockly.core.component.BlockLine;
 
 /*
@@ -43,10 +44,14 @@ public class Block implements Cloneable {
 		Automatic, External, Inline
 	}
 
-	public final BlockDescriber describer;
+	private final BlockDescriber describer;
 
 	public Block(BlockDescriber describer) {
 		this.describer = describer;
+	}
+
+	public BlockDescriber getDescriber() {
+		return describer;
 	}
 
 	private BlockWorkspace workspace = null;
@@ -99,6 +104,7 @@ public class Block implements Cloneable {
 	private boolean disable = false;
 	private boolean editable = true;
 	private boolean folded = false;
+	private boolean visible = true;
 	private LayoutType layoutType = LayoutType.Automatic;
 	private String tooltip;
 
@@ -140,6 +146,14 @@ public class Block implements Cloneable {
 
 	public void setFolded(boolean folded) {
 		this.folded = folded;
+	}
+	
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
 	}
 
 	public LayoutType getLayoutType() {
@@ -205,13 +219,28 @@ public class Block implements Cloneable {
 	}
 
 	public void doLayout() {
-		int x = 0, y = 0;
+		int x = 0, y = BlockUtils.VGAP;
 		for (BlockLine line : lines) {
-			// TODO Layout line
+			line.setLocation(x, y);
+			line.doLayout();
+			y+=line.getHeight()+BlockUtils.VGAP;
 		}
+		if(next!=null)next.setLocation(x, y);
 	}
 
 	public void draw(GraphicsContext graphics) {
+		if(!isVisible())return;
+		
 		graphics.translate(x, y);
+		
+		Color color = Color.rgb(getDescriber().getColor()>>16, (getDescriber().getColor()>>8)%256, getDescriber().getColor()%256);
+		graphics.setFill(color);
+		graphics.appendSVGPath(getPath());
+		
+		graphics.setFill(color.darker());
+		graphics.appendSVGPath(getDarkPath());
+		
+		graphics.setFill(color.brighter());
+		graphics.appendSVGPath(getLightPath());
 	}
 }

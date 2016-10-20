@@ -42,4 +42,16 @@ public interface BlockComponent {
 	double getWidth();
 
 	void dispose();
+	
+	boolean isVisible();
+	
+	void setVisible(boolean visible);
+	
+	boolean isEditable();
+	
+	void setEditable(boolean editable);
+	
+	boolean isDisable();
+	
+	void setDisable(boolean disable);
 }
