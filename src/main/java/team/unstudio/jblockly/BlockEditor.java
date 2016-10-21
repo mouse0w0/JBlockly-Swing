@@ -28,6 +28,7 @@ package team.unstudio.jblockly;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import team.unstudio.jblockly.core.BlockWorkspace;
 
 public class BlockEditor extends Application {
