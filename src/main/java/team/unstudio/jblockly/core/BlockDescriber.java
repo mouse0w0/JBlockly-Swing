@@ -25,21 +25,15 @@
 
 package team.unstudio.jblockly.core;
 
+import team.unstudio.jblockly.core.Block.ConnectionType;
+
 /*
  * BlockDescriber
  */
 public class BlockDescriber {
 
-	/**
-	 * ConnectionType: None: xxxx Left: xxxx TopAndBottom: xxxx Top: xxxx
-	 * Bottom: xxxx
-	 */
-	public enum ConnectionType {
-		None, Left, TopAndBottom, Top, Bottom
-	}
-
 	private final String name;
-	private int color = 0XFFFFFF;
+	private int color = 0X666666;
 	private ConnectionType connectionType = ConnectionType.None;
 	private String message;
 	private String tooltip;

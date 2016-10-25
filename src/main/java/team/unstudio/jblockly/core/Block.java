@@ -43,11 +43,23 @@ public class Block implements Cloneable {
 	public enum LayoutType {
 		Automatic, External, Inline
 	}
+	
+	/**
+	 * ConnectionType: None: xxxx Left: xxxx TopAndBottom: xxxx Top: xxxx
+	 * Bottom: xxxx
+	 */
+	public enum ConnectionType {
+		None, Left, TopAndBottom, Top, Bottom
+	}
 
 	private final BlockDescriber describer;
 
 	public Block(BlockDescriber describer) {
 		this.describer = describer;
+	}
+	
+	public Block() {
+		this.describer = null;
 	}
 
 	public BlockDescriber getDescriber() {
@@ -106,6 +118,7 @@ public class Block implements Cloneable {
 	private boolean folded = false;
 	private boolean visible = true;
 	private LayoutType layoutType = LayoutType.Automatic;
+	private ConnectionType connectionType = ConnectionType.None;
 	private String tooltip;
 
 	public String getTooltip() {
@@ -164,8 +177,17 @@ public class Block implements Cloneable {
 		this.layoutType = layoutType;
 	}
 
+	public ConnectionType getConnectionType() {
+		return connectionType;
+	}
+
+	public void setConnectionType(ConnectionType connectionType) {
+		this.connectionType = connectionType;
+	}
+
 	private int width, height, x, y;
-	private String path, darkPath, lightPath;
+	private String path = "M 10,10 H 200 V 200 H 10 Z", darkPath, lightPath;
+	private int color = 0X000000;
 	private boolean selected = false;
 
 	public int getWidth() {
@@ -208,11 +230,27 @@ public class Block implements Cloneable {
 	public String getLightPath() {
 		return lightPath;
 	}
+	
+	public int getColor() {
+		return color;
+	}
+
+	public void setColor(int color) {
+		this.color = color;
+	}
+	
+	public void setColor(int r,int g,int b) {
+		this.color = (r<<16)+(g<<8)+b;
+	}
 
 	public boolean isSelected() {
 		return selected;
 	}
 
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+	
 	public void dispose() {
 		for (BlockLine line : lines)
 			line.dispose();
@@ -233,14 +271,18 @@ public class Block implements Cloneable {
 		
 		graphics.translate(x, y);
 		
-		Color color = Color.rgb(getDescriber().getColor()>>16, (getDescriber().getColor()>>8)%256, getDescriber().getColor()%256);
+		Color color = Color.rgb(getColor()>>16, (getColor()>>8)%256, getColor()%256);
+		
 		graphics.setFill(color);
 		graphics.appendSVGPath(getPath());
+		graphics.fill();
 		
-		graphics.setFill(color.darker());
+		graphics.setStroke(color.darker());
 		graphics.appendSVGPath(getDarkPath());
+		graphics.stroke();
 		
 		graphics.setFill(color.brighter());
 		graphics.appendSVGPath(getLightPath());
+		graphics.stroke();
 	}
 }

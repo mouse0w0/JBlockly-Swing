@@ -39,20 +39,21 @@ import javafx.scene.paint.Color;
 public class BlockWorkspace extends Pane {
 
 	private final List<Block> blocks = new ArrayList<Block>();
-	private final Canvas canvas = new Canvas();
+	private final Canvas canvas;
 
 	private Block selectBlock;
 
 	public BlockWorkspace() {
+		canvas = new Canvas(1000, 1000);
 		getChildren().add(canvas);
 		canvas.setOnMousePressed(event -> {
-
 		});
 		canvas.setOnMouseReleased(event -> {
-
+		});
+		canvas.setOnMouseClicked(event -> {
 		});
 		canvas.setOnMouseMoved(event -> {
-
+			draw();
 		});
 	}
 
@@ -63,6 +64,8 @@ public class BlockWorkspace extends Pane {
 	public void addTopBlock(Block block) {
 		block.setWorkspace(this);
 		blocks.add(block);
+		
+		draw();
 	}
 
 	public Block getSelectBlock() {
