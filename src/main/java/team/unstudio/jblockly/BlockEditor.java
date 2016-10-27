@@ -38,7 +38,7 @@ public class BlockEditor extends Application {
 		BlockWorkspace workspace = new BlockWorkspace();
 		
 		Block block1 = new Block();
-		block1.setLocation(200, 200);
+		block1.setLocation(100, 100);
 		block1.setColor(0XFF0000);
 		workspace.addTopBlock(block1);
 		

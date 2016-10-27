@@ -28,10 +28,7 @@ package team.unstudio.jblockly.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 
 /*
  * BlockWorkspace
@@ -39,23 +36,10 @@ import javafx.scene.paint.Color;
 public class BlockWorkspace extends Pane {
 
 	private final List<Block> blocks = new ArrayList<Block>();
-	private final Canvas canvas;
 
 	private Block selectBlock;
 
-	public BlockWorkspace() {
-		canvas = new Canvas(1000, 1000);
-		getChildren().add(canvas);
-		canvas.setOnMousePressed(event -> {
-		});
-		canvas.setOnMouseReleased(event -> {
-		});
-		canvas.setOnMouseClicked(event -> {
-		});
-		canvas.setOnMouseMoved(event -> {
-			draw();
-		});
-	}
+	public BlockWorkspace() {}
 
 	public List<Block> getBlocks() {
 		return blocks;
@@ -63,9 +47,8 @@ public class BlockWorkspace extends Pane {
 
 	public void addTopBlock(Block block) {
 		block.setWorkspace(this);
+		getChildren().add(block);
 		blocks.add(block);
-		
-		draw();
 	}
 
 	public Block getSelectBlock() {
@@ -77,10 +60,6 @@ public class BlockWorkspace extends Pane {
 	}
 
 	public void draw() {
-		GraphicsContext graphics = canvas.getGraphicsContext2D();
-		graphics.setFill(Color.WHITE);
-		graphics.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-
-		blocks.forEach(block -> block.draw(graphics));
+		
 	}
 }

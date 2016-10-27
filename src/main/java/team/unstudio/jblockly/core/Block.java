@@ -30,13 +30,13 @@ import java.util.List;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-
+import javafx.scene.shape.SVGPath;
 import team.unstudio.jblockly.core.component.BlockLine;
 
 /*
  * Code block
  */
-public class Block implements Cloneable {
+public class Block extends SVGPath implements Cloneable {
 
 	/**
 	 * LayoutType: Automatic: xxxx External: xxxx Inline: xxxx
@@ -61,6 +61,7 @@ public class Block implements Cloneable {
 	
 	public Block() {
 		this.describer = null;
+		setContent(path);
 	}
 
 	public BlockDescriber getDescriber() {
@@ -79,11 +80,11 @@ public class Block implements Cloneable {
 
 	private Block parent = null;
 
-	public Block getParent() {
+	public Block getBlockParent() {
 		return parent;
 	}
 
-	public void setParent(Block parent) {
+	public void setBlockParent(Block parent) {
 		this.parent = parent;
 	}
 
@@ -138,13 +139,13 @@ public class Block implements Cloneable {
 		this.moveable = moveable;
 	}
 
-	public boolean isDisable() {
-		return disable;
-	}
-
-	public void setDisable(boolean disable) {
-		this.disable = disable;
-	}
+//	public boolean isDisable() {
+//		return disable;
+//	}
+//
+//	public void setDisable(boolean disable) {
+//		this.disable = disable;
+//	}
 
 	public boolean isEditable() {
 		return editable;
@@ -162,13 +163,13 @@ public class Block implements Cloneable {
 		this.folded = folded;
 	}
 	
-	public boolean isVisible() {
-		return visible;
-	}
-
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
+//	public boolean isVisible() {
+//		return visible;
+//	}
+//
+//	public void setVisible(boolean visible) {
+//		this.visible = visible;
+//	}
 
 	public LayoutType getLayoutType() {
 		return layoutType;
@@ -187,7 +188,7 @@ public class Block implements Cloneable {
 	}
 
 	private int width, height, x, y;
-	private String path = "M 10,10 H 200 V 200 H 10 Z", darkPath, lightPath;
+	private String path = "M 10,10 H 200 V 200 H 10 Z", darkPath="M 10,10 V 200 H 200", lightPath="M 10,10 H 200 V 200";
 	private int color = 0X000000;
 	private boolean selected = false;
 
@@ -199,25 +200,25 @@ public class Block implements Cloneable {
 		return height;
 	}
 
-	public int getX() {
-		return x;
+	public double getX() {
+		return getLayoutX();
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		setLayoutX(x);
 	}
 
-	public int getY() {
-		return y;
+	public double getY() {
+		return getLayoutY();
 	}
 
 	public void setY(int y) {
-		this.y = y;
+		setLayoutY(y);
 	}
 
 	public void setLocation(int x, int y) {
-		this.x = x;
-		this.y = y;
+		setX(x);
+		setY(y);
 	}
 
 	public String getPath() {
@@ -238,10 +239,13 @@ public class Block implements Cloneable {
 
 	public void setColor(int color) {
 		this.color = color;
+		Color c = Color.rgb(color>>16, (color>>8)%256, color%256);
+		setFill(c);
+		setStroke(c.darker());
 	}
 	
 	public void setColor(int r,int g,int b) {
-		this.color = (r<<16)+(g<<8)+b;
+		setColor((r<<16)+(g<<8)+b);
 	}
 
 	public boolean isSelected() {
@@ -275,14 +279,17 @@ public class Block implements Cloneable {
 		Color color = Color.rgb(getColor()>>16, (getColor()>>8)%256, getColor()%256);
 		
 		graphics.setFill(color);
+		graphics.beginPath();
 		graphics.appendSVGPath(getPath());
 		graphics.fill();
 		
 		graphics.setStroke(color.darker());
+		graphics.beginPath();
 		graphics.appendSVGPath(getDarkPath());
 		graphics.stroke();
 		
-		graphics.setFill(color.brighter());
+		graphics.setStroke(color.brighter());
+		graphics.beginPath();
 		graphics.appendSVGPath(getLightPath());
 		graphics.stroke();
 	}
