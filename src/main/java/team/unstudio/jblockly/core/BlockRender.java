@@ -25,6 +25,8 @@
 
 package team.unstudio.jblockly.core;
 
+import java.awt.geom.Path2D;
+
 import javafx.scene.shape.ArcTo;
 import javafx.scene.shape.ClosePath;
 import javafx.scene.shape.CubicCurveTo;
@@ -40,17 +42,15 @@ import javafx.scene.shape.VLineTo;
  * BlockRender
  */
 public class BlockRender {
-
+	
 	/**
-	 * from SVG path to{@link javafx.scene.shape.Path}
+	 * from SVG path to{@link java.awt.geom.Path2D}
 	 * 
 	 * @param svg
 	 * @return
-	 * @deprecated {@link javafx.scene.canvas.GraphicsContext#appendSVGPath()}
 	 */
-	@Deprecated
-	public static Path getPathFromSVG(String svg) {
-		Path path = new Path();
+	public static Path2D getPathFromSVG(String svg) {
+		Path2D path = new Path2D.Double();
 		int i = 0;
 		while (i < svg.length()) {
 			if (Character.isLetter(svg.charAt(i))) {
@@ -74,7 +74,6 @@ public class BlockRender {
 	 * @param svg
 	 * @return
 	 */
-	@Deprecated
 	public static PathElement[] getPathElementFromSVG(String svg) {
 
 		String args[] = svg.substring(1).replaceAll(",", " ").split(" ");

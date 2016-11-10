@@ -25,18 +25,21 @@
 
 package team.unstudio.jblockly.core;
 
+import java.awt.Graphics;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.SVGPath;
+import javax.swing.JPanel;
+
 import team.unstudio.jblockly.core.component.BlockLine;
 
 /*
  * Code block
  */
-public class Block extends SVGPath implements Cloneable {
+public class Block extends JPanel implements Cloneable {
+
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * LayoutType: Automatic: xxxx External: xxxx Inline: xxxx
@@ -61,7 +64,6 @@ public class Block extends SVGPath implements Cloneable {
 	
 	public Block() {
 		this.describer = null;
-		setContent(path);
 	}
 
 	public BlockDescriber getDescriber() {
@@ -139,13 +141,13 @@ public class Block extends SVGPath implements Cloneable {
 		this.moveable = moveable;
 	}
 
-//	public boolean isDisable() {
-//		return disable;
-//	}
-//
-//	public void setDisable(boolean disable) {
-//		this.disable = disable;
-//	}
+	public boolean isDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
 
 	public boolean isEditable() {
 		return editable;
@@ -163,13 +165,13 @@ public class Block extends SVGPath implements Cloneable {
 		this.folded = folded;
 	}
 	
-//	public boolean isVisible() {
-//		return visible;
-//	}
-//
-//	public void setVisible(boolean visible) {
-//		this.visible = visible;
-//	}
+	public boolean isVisible() {
+		return visible;
+	}
+
+	public void setVisible(boolean visible) {
+		this.visible = visible;
+	}
 
 	public LayoutType getLayoutType() {
 		return layoutType;
@@ -200,20 +202,20 @@ public class Block extends SVGPath implements Cloneable {
 		return height;
 	}
 
-	public double getX() {
-		return getLayoutX();
+	public int getX() {
+		return x;
 	}
 
 	public void setX(int x) {
-		setLayoutX(x);
+		this.x=x;
 	}
 
-	public double getY() {
-		return getLayoutY();
+	public int getY() {
+		return y;
 	}
 
 	public void setY(int y) {
-		setLayoutY(y);
+		this.y = y;
 	}
 
 	public void setLocation(int x, int y) {
@@ -239,9 +241,6 @@ public class Block extends SVGPath implements Cloneable {
 
 	public void setColor(int color) {
 		this.color = color;
-		Color c = Color.rgb(color>>16, (color>>8)%256, color%256);
-		setFill(c);
-		setStroke(c.darker());
 	}
 	
 	public void setColor(int r,int g,int b) {
@@ -270,27 +269,22 @@ public class Block extends SVGPath implements Cloneable {
 		}
 		if(next!=null)next.setLocation(x, y);
 	}
-
-	public void draw(GraphicsContext graphics) {
-		if(!isVisible())return;
-		
-		graphics.translate(x, y);
-		
-		Color color = Color.rgb(getColor()>>16, (getColor()>>8)%256, getColor()%256);
-		
-		graphics.setFill(color);
-		graphics.beginPath();
-		graphics.appendSVGPath(getPath());
-		graphics.fill();
-		
-		graphics.setStroke(color.darker());
-		graphics.beginPath();
-		graphics.appendSVGPath(getDarkPath());
-		graphics.stroke();
-		
-		graphics.setStroke(color.brighter());
-		graphics.beginPath();
-		graphics.appendSVGPath(getLightPath());
-		graphics.stroke();
+	
+	@Override
+	public boolean contains(int x, int y) {
+		// TODO 自动生成的方法存根
+		return super.contains(x, y);
+	}
+	
+	@Override
+	public boolean contains(Point p) {
+		// TODO 自动生成的方法存根
+		return super.contains(p);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		// TODO 自动生成的方法存根
+		super.paintComponent(g);
 	}
 }

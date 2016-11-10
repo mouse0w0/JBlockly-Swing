@@ -28,12 +28,14 @@ package team.unstudio.jblockly.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.layout.Pane;
+import javax.swing.JPanel;
 
 /*
  * BlockWorkspace
  */
-public class BlockWorkspace extends Pane {
+public class BlockWorkspace extends JPanel {
+
+	private static final long serialVersionUID = 1L;
 
 	private final List<Block> blocks = new ArrayList<Block>();
 
@@ -47,7 +49,6 @@ public class BlockWorkspace extends Pane {
 
 	public void addTopBlock(Block block) {
 		block.setWorkspace(this);
-		getChildren().add(block);
 		blocks.add(block);
 	}
 
