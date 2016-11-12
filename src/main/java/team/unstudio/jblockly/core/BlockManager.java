@@ -45,7 +45,7 @@ public class BlockManager {
 	 * 
 	 * @since 1.0.0
 	 */
-	private final List<BlockDescriber> blocks = new ArrayList<BlockDescriber>();
+	private final List<BlockDescriber> blocks = new ArrayList<>();
 
 	/**
 	 * A list for all {@linkplain team.unstudio.jblockly.core.BlockGroup
@@ -53,7 +53,7 @@ public class BlockManager {
 	 * 
 	 * @since 1.0.0
 	 */
-	private final List<BlockGroup> groups = new ArrayList<BlockGroup>();
+	private final List<BlockGroup> groups = new ArrayList<>();
 
 	public BlockManager() {
 	}

@@ -101,7 +101,7 @@ public class Block extends JPanel implements Cloneable {
 	}
 
 	private String message;
-	private final List<BlockLine> lines = new ArrayList<BlockLine>();
+	private final List<BlockLine> lines = new ArrayList<>();
 
 	public String getMessage() {
 		return message;
@@ -165,10 +165,12 @@ public class Block extends JPanel implements Cloneable {
 		this.folded = folded;
 	}
 	
+	@Override
 	public boolean isVisible() {
 		return visible;
 	}
 
+	@Override
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
@@ -194,14 +196,17 @@ public class Block extends JPanel implements Cloneable {
 	private int color = 0X000000;
 	private boolean selected = false;
 
+	@Override
 	public int getWidth() {
 		return width;
 	}
 
+	@Override
 	public int getHeight() {
 		return height;
 	}
 
+	@Override
 	public int getX() {
 		return x;
 	}
@@ -210,6 +215,7 @@ public class Block extends JPanel implements Cloneable {
 		this.x=x;
 	}
 
+	@Override
 	public int getY() {
 		return y;
 	}
@@ -218,6 +224,7 @@ public class Block extends JPanel implements Cloneable {
 		this.y = y;
 	}
 
+	@Override
 	public void setLocation(int x, int y) {
 		setX(x);
 		setY(y);
@@ -260,6 +267,7 @@ public class Block extends JPanel implements Cloneable {
 			line.dispose();
 	}
 
+	@Override
 	public void doLayout() {
 		int x = 0, y = BlockUtils.VGAP;
 		for (BlockLine line : lines) {

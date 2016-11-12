@@ -37,7 +37,7 @@ public class BlockWorkspace extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private final List<Block> blocks = new ArrayList<Block>();
+	private final List<Block> blocks = new ArrayList<>();
 
 	private Block selectBlock;
 
@@ -58,9 +58,5 @@ public class BlockWorkspace extends JPanel {
 
 	public void setSelectBlock(Block selectBlock) {
 		this.selectBlock = selectBlock;
-	}
-
-	public void draw() {
-		
 	}
 }

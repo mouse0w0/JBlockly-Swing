@@ -98,7 +98,7 @@ public class BlockLine {
 
 	public void doLayout() {
 		if(align==AlignType.Left){
-			int y = (int) (parent.getY()+this.y),x = (int) (parent.getX()+ this.x + BlockUtils.HGAP);
+			int y = parent.getY()+this.y,x = parent.getX()+ this.x + BlockUtils.HGAP;
 			for (BlockComponent c : components) {
 				c.setPoint(x, y);
 				x += c.getWidth() + BlockUtils.HGAP;
