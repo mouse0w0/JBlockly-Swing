@@ -32,7 +32,7 @@ public class BlockGroup {
 
 	private String node[] = new String[0];
 	private String name;
-	private List<BlockDescriber> blocks = new ArrayList<>();
+	private List<BlockBuilder> blocks = new ArrayList<>();
 
 	public String[] getNode() {
 		return node;
@@ -50,7 +50,7 @@ public class BlockGroup {
 		this.name = name;
 	}
 
-	public List<BlockDescriber> getBlocks() {
+	public List<BlockBuilder> getBlocks() {
 		return blocks;
 	}
 }

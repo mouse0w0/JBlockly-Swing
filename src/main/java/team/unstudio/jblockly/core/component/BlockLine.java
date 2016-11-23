@@ -100,7 +100,7 @@ public class BlockLine {
 		if(align==AlignType.Left){
 			int y = parent.getY()+this.y,x = parent.getX()+ this.x + BlockUtils.HGAP;
 			for (BlockComponent c : components) {
-				c.setPoint(x, y);
+				c.setLocation(x, y);
 				x += c.getWidth() + BlockUtils.HGAP;
 			}
 		}else if(align == AlignType.Right){

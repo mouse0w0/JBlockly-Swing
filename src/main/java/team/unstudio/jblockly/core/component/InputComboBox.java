@@ -25,62 +25,26 @@
 
 package team.unstudio.jblockly.core.component;
 
-import javafx.scene.control.ComboBox;
-import javafx.scene.layout.Pane;
+import javax.swing.JComboBox;
 
-public class InputComboBox<T> extends ComboBox<T> implements ValueInput<T> {
+public class InputComboBox<T> extends JComboBox<T> implements ValueInput<T> {
 
-	@Override
-	public double getX() {
-		return getLayoutX();
-	}
+	private static final long serialVersionUID = 1L;
 
 	@Override
-	public double getY() {
-		return getLayoutY();
+	public void dispose() {
+		// TODO 自动生成的方法存根
+		
 	}
 
-	@Override
-	public void setX(double x) {
-		setLayoutX(x);
-	}
-
-	@Override
-	public void setY(double y) {
-		setLayoutY(y);
-	}
-
-	@Override
-	public void setPoint(double x, double y) {
-		setX(x);
-		setY(y);
-	}
-
-	private String name;
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public T getInput() {
-		return getValue();
+		return (T) getSelectedItem();
 	}
 
 	@Override
 	public void setInput(T obj) {
-		setValue(obj);
-	}
-
-	@Override
-	public void dispose() {
-		setVisible(false);
-		((Pane) getParent()).getChildren().remove(this);
+		setSelectedItem(obj);
 	}
 }

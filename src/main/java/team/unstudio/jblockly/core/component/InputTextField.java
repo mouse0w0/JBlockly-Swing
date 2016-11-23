@@ -25,47 +25,15 @@
 
 package team.unstudio.jblockly.core.component;
 
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javax.swing.JTextField;
 
-public class InputTextField extends TextField implements ValueInput<String> {
+public class InputTextField extends JTextField implements ValueInput<String> {
 
-	@Override
-	public double getX() {
-		return getLayoutX();
-	}
+	private static final long serialVersionUID = 1L;
 
 	@Override
-	public double getY() {
-		return getLayoutY();
-	}
-
-	@Override
-	public void setX(double x) {
-		setLayoutX(x);
-	}
-
-	@Override
-	public void setY(double y) {
-		setLayoutY(y);
-	}
-
-	@Override
-	public void setPoint(double x, double y) {
-		setX(x);
-		setY(y);
-	}
-
-	private String name;
-
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
+	public void dispose() {
+		
 	}
 
 	@Override
@@ -76,11 +44,5 @@ public class InputTextField extends TextField implements ValueInput<String> {
 	@Override
 	public void setInput(String obj) {
 		setText(obj);
-	}
-
-	@Override
-	public void dispose() {
-		setVisible(false);
-		((Pane) getParent()).getChildren().remove(this);
 	}
 }

@@ -25,48 +25,16 @@
 
 package team.unstudio.jblockly.core.component;
 
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+import javax.swing.JLabel;
 
-public class BlockLabel extends Label implements BlockComponent {
+public class BlockLabel extends JLabel implements BlockComponent {
 
-	@Override
-	public double getX() {
-		return getLayoutX();
-	}
-
-	@Override
-	public double getY() {
-		return getLayoutY();
-	}
-
-	@Override
-	public void setX(double x) {
-		setLayoutX(x);
-	}
-
-	@Override
-	public void setY(double y) {
-		setLayoutY(y);
-	}
-
-	@Override
-	public void setPoint(double x, double y) {
-		setX(x);
-		setY(y);
-	}
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void dispose() {
-		setVisible(false);
-		((Pane) getParent()).getChildren().remove(this);
+		// TODO 自动生成的方法存根
+		
 	}
 
-	@Override
-	public boolean isEditable() {
-		return false;
-	}
-
-	@Override
-	public void setEditable(boolean editable) {}
 }

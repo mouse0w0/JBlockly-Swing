@@ -27,6 +27,7 @@ package team.unstudio.jblockly.core;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,20 +56,8 @@ public class Block extends JPanel implements Cloneable {
 	public enum ConnectionType {
 		None, Left, TopAndBottom, Top, Bottom
 	}
-
-	private final BlockDescriber describer;
-
-	public Block(BlockDescriber describer) {
-		this.describer = describer;
-	}
 	
-	public Block() {
-		this.describer = null;
-	}
-
-	public BlockDescriber getDescriber() {
-		return describer;
-	}
+	public Block() {}
 
 	private BlockWorkspace workspace = null;
 
@@ -120,7 +109,6 @@ public class Block extends JPanel implements Cloneable {
 	private boolean disable = false;
 	private boolean editable = true;
 	private boolean folded = false;
-	private boolean visible = true;
 	private LayoutType layoutType = LayoutType.Automatic;
 	private ConnectionType connectionType = ConnectionType.None;
 	private String tooltip;
@@ -164,16 +152,6 @@ public class Block extends JPanel implements Cloneable {
 	public void setFolded(boolean folded) {
 		this.folded = folded;
 	}
-	
-	@Override
-	public boolean isVisible() {
-		return visible;
-	}
-
-	@Override
-	public void setVisible(boolean visible) {
-		this.visible = visible;
-	}
 
 	public LayoutType getLayoutType() {
 		return layoutType;
@@ -191,56 +169,9 @@ public class Block extends JPanel implements Cloneable {
 		this.connectionType = connectionType;
 	}
 
-	private int width, height, x, y;
-	private String path = "M 10,10 H 200 V 200 H 10 Z", darkPath="M 10,10 V 200 H 200", lightPath="M 10,10 H 200 V 200";
+	protected Area area;
 	private int color = 0X000000;
 	private boolean selected = false;
-
-	@Override
-	public int getWidth() {
-		return width;
-	}
-
-	@Override
-	public int getHeight() {
-		return height;
-	}
-
-	@Override
-	public int getX() {
-		return x;
-	}
-
-	public void setX(int x) {
-		this.x=x;
-	}
-
-	@Override
-	public int getY() {
-		return y;
-	}
-
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	@Override
-	public void setLocation(int x, int y) {
-		setX(x);
-		setY(y);
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public String getDarkPath() {
-		return darkPath;
-	}
-
-	public String getLightPath() {
-		return lightPath;
-	}
 	
 	public int getColor() {
 		return color;
@@ -280,14 +211,12 @@ public class Block extends JPanel implements Cloneable {
 	
 	@Override
 	public boolean contains(int x, int y) {
-		// TODO 自动生成的方法存根
-		return super.contains(x, y);
+		return area.contains(x, y);
 	}
 	
 	@Override
 	public boolean contains(Point p) {
-		// TODO 自动生成的方法存根
-		return super.contains(p);
+		return contains(p.x,p.y);
 	}
 	
 	@Override

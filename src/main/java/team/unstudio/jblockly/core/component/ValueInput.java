@@ -34,5 +34,9 @@ public interface ValueInput<T> extends BlockComponent {
 	T getInput();
 
 	void setInput(T obj);
+	
+	boolean isEditable();
+	
+	void setEditable(boolean editable);
 
 }

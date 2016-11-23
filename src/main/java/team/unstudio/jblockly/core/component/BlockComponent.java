@@ -27,31 +27,19 @@ package team.unstudio.jblockly.core.component;
 
 public interface BlockComponent {
 
-	double getX();
+	int getX();
 
-	double getY();
+	int getY();
 
-	void setX(double x);
+	void setLocation(int x, int y);
 
-	void setY(double y);
+	int getHeight();
 
-	void setPoint(double x, double y);
-
-	double getHeight();
-
-	double getWidth();
+	int getWidth();
 
 	void dispose();
 	
 	boolean isVisible();
 	
 	void setVisible(boolean visible);
-	
-	boolean isEditable();
-	
-	void setEditable(boolean editable);
-	
-	boolean isDisable();
-	
-	void setDisable(boolean disable);
 }
