@@ -25,9 +25,6 @@
 
 package team.unstudio.jblockly.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JPanel;
 
 /*
@@ -37,19 +34,20 @@ public class BlockWorkspace extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private final List<Block> blocks = new ArrayList<>();
-
 	private Block selectBlock;
 
-	public BlockWorkspace() {}
-
-	public List<Block> getBlocks() {
-		return blocks;
+	public BlockWorkspace() {
+		setOpaque(true);
 	}
 
-	public void addTopBlock(Block block) {
+	public void addBlock(Block block) {
 		block.setWorkspace(this);
-		blocks.add(block);
+		add(block);
+	}
+	
+	public void removeBlock(Block block) {
+		block.setWorkspace(null);
+		remove(block);
 	}
 
 	public Block getSelectBlock() {
