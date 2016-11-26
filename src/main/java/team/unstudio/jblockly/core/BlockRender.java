@@ -29,6 +29,7 @@ import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import team.unstudio.jblockly.core.Block.ConnectionType;
 import team.unstudio.jblockly.util.SVGFormatException;
 
 /*
@@ -140,6 +141,19 @@ public class BlockRender {
 	 */
 	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 ";
 
+	
+	public static String getBlockTop(ConnectionType type){
+		switch (type) {
+		case Top:
+		case TopAndBottom:
+			return BLOCK_TOP_CONNECTION;
+		case None:
+		case Bottom:
+		case Left:
+		default:
+			return BLOCK_TOP;
+		}
+	}
 	/**
 	 * get block path
 	 * 

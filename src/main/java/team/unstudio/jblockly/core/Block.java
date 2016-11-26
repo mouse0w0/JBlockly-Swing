@@ -25,8 +25,15 @@
 
 package team.unstudio.jblockly.core;
 
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +64,47 @@ public class Block extends JPanel implements Cloneable {
 		None, Left, TopAndBottom, Top, Bottom
 	}
 	
-	public Block() {}
+	int xOld=0,yOld=0;
+	
+	public Block() {
+		setLayout(null);
+		setOpaque(false);
+		
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				if(e.getButton() == MouseEvent.BUTTON1&&moveable){
+					int x=getX(),y=getY();
+					Container parent = getParent(),c = getParent();
+					while(!(c instanceof BlockWorkspace)){
+						x+=c.getX();
+						y+=c.getY();
+						c=c.getParent();
+					}
+					xOld = e.getXOnScreen() - x;
+					yOld = e.getYOnScreen() - y;
+					
+					setSelected(true);
+					setLocation(x, y);
+					workspace.setSelectBlock(Block.this);
+					parent.revalidate();
+				}else if(e.getButton() == MouseEvent.BUTTON3){
+					BlockMenu.INSTANCE.show(Block.this, e.getX(), e.getY());
+				}
+			}
+			
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				workspace.repaint();
+			}
+		});
+		addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				if(isSelected()) setLocation(e.getXOnScreen() - xOld, e.getYOnScreen() - yOld);
+			}
+		});
+	}
 
 	private BlockWorkspace workspace = null;
 
@@ -192,9 +239,9 @@ public class Block extends JPanel implements Cloneable {
 	@Override
 	public void doLayout() {
 		int x = 0, y = BlockUtils.VGAP;
+		StringBuilder svg = new StringBuilder(BlockRender.getBlockTop(connectionType));
 		for (BlockLine line : lines) {
 			line.setLocation(x, y);
-			line.doLayout();
 			y+=line.getHeight()+BlockUtils.VGAP;
 		}
 		if(next!=null)next.setLocation(x, y);
@@ -212,7 +259,10 @@ public class Block extends JPanel implements Cloneable {
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		// TODO 自动生成的方法存根
-		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D)g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_DEFAULT);
+		
+		g2d.setColor(new Color(color>>16,(color>>8)%256,color%256));
+		g2d.fill(area);
 	}
 }

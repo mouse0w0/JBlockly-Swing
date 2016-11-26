@@ -25,6 +25,7 @@
 
 package team.unstudio.jblockly.core.component;
 
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,15 +59,18 @@ public class BlockLine {
 
 	public void setX(int x) {
 		this.x = x;
+		doLayout();
 	}
 
 	public void setY(int y) {
 		this.y = y;
+		doLayout();
 	}
 
 	public void setLocation(int x, int y) {
-		setX(x);
-		setY(y);
+		this.x = x;
+		this.y = y;
+		doLayout();
 	}
 
 	public double getHeight() {
@@ -89,7 +93,13 @@ public class BlockLine {
 	}
 
 	public void setParent(Block parent) {
+		if(this.parent!=null) dispose();
 		this.parent = parent;
+		if(parent!=null) 
+			for(BlockComponent component:components)
+				parent.add((Component) component);
+		doLayout();
+		
 	}
 
 	public List<BlockComponent> getComponents() {
@@ -98,7 +108,7 @@ public class BlockLine {
 
 	public void doLayout() {
 		if(align==AlignType.Left){
-			int y = parent.getY()+this.y,x = parent.getX()+ this.x + BlockUtils.HGAP;
+			int y = getY(),x = getX() + BlockUtils.HGAP;
 			for (BlockComponent c : components) {
 				c.setLocation(x, y);
 				x += c.getWidth() + BlockUtils.HGAP;
@@ -125,6 +135,7 @@ public class BlockLine {
 	public void setChild(Block child) {
 		child.setBlockParent(parent);
 		this.child = child;
+		if(child!=null) child.setLocation(childX, childY);
 	}
 
 	public int getChildX() {
@@ -133,6 +144,7 @@ public class BlockLine {
 
 	public void setChildX(int childX) {
 		this.childX = childX;
+		if(child!=null) child.setLocation(childX, childY);
 	}
 
 	public int getChildY() {
@@ -141,11 +153,13 @@ public class BlockLine {
 
 	public void setChildY(int childY) {
 		this.childY = childY;
+		if(child!=null) child.setLocation(childX, childY);
 	}
 	
 	public void setChildLocation(int childX,int childY){
-		setChildX(childX);
-		setChildY(childY);
+		this.childX = childX;
+		this.childY = childY;
+		if(child!=null) child.setLocation(childX, childY);
 	}
 
 	public LineType getLineType() {
@@ -156,7 +170,6 @@ public class BlockLine {
 		this.line = line;
 	}
 	
-
 	public void dispose() {
 		for (BlockComponent component : components)
 			component.dispose();
