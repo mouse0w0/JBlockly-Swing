@@ -33,8 +33,7 @@ public class InputComboBox<T> extends JComboBox<T> implements ValueInput<T> {
 
 	@Override
 	public void dispose() {
-		// TODO 自动生成的方法存根
-		
+		getParent().remove(this);
 	}
 
 	@SuppressWarnings("unchecked")

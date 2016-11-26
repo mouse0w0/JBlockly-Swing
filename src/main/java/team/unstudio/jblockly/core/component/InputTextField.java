@@ -33,7 +33,7 @@ public class InputTextField extends JTextField implements ValueInput<String> {
 
 	@Override
 	public void dispose() {
-		
+		getParent().remove(this);
 	}
 
 	@Override

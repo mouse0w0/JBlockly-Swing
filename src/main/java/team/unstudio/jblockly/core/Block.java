@@ -106,7 +106,6 @@ public class Block extends JPanel implements Cloneable {
 	}
 
 	private boolean moveable = true;
-	private boolean disable = false;
 	private boolean editable = true;
 	private boolean folded = false;
 	private LayoutType layoutType = LayoutType.Automatic;
@@ -127,14 +126,6 @@ public class Block extends JPanel implements Cloneable {
 
 	public void setMoveable(boolean moveable) {
 		this.moveable = moveable;
-	}
-
-	public boolean isDisable() {
-		return disable;
-	}
-
-	public void setDisable(boolean disable) {
-		this.disable = disable;
 	}
 
 	public boolean isEditable() {
