@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import team.unstudio.jblockly.core.Block.ConnectionType;
+import team.unstudio.jblockly.core.component.BlockLine.LineType;
 import team.unstudio.jblockly.util.SVGFormatException;
 
 /*
@@ -154,6 +155,18 @@ public class BlockRender {
 			return BLOCK_TOP;
 		}
 	}
+	
+	public static String getBlockSide(LineType type,int x, int y, int width, int height){
+		switch (type) {
+		case Insert:
+			return getBlockInsertSlot(x, y, width, height);
+		case Branch:
+			return getBlockBranch(x, y, width, height);
+		default:
+			return "";
+		}
+	}
+	
 	/**
 	 * get block path
 	 * 
@@ -166,6 +179,21 @@ public class BlockRender {
 	public static String getBlockInsertSlot(int x, int y, int width, int height) {
 		return new StringBuilder().append("V ").append(y + 9).append(" H ").append(x + width - 6).append(" V ")
 				.append(y + 20).append(" H ").append(x + width).append(" ").toString();
+	}
+	
+	/**
+	 * get block fork's path
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @return
+	 */
+	public static String getBlockBranch(int x, int y, int width, int height) {
+		return new StringBuilder().append("V ").append(y) 
+				.append(" H ").append(x + 29).append(" V ").append(y + 5).append(" H ").append(x + 20).append(" V ").append(y)
+				.append(" H ").append(x + 10).append(" V ").append(y + height + 20).append(" H ").append(x + width).append(" ").toString();
 	}
 
 	/**
@@ -195,21 +223,6 @@ public class BlockRender {
 	 */
 	public static String getBlockBottom(int x, int y, int width, int height) {
 		return new StringBuilder().append("V ").append(y).append(" H ").append(x).append(" Z ").toString();
-	}
-
-	/**
-	 * get block fork's path
-	 * 
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
-	 * @return
-	 */
-	public static String getBlockBranch(int x, int y, int width, int height) {
-		return new StringBuilder().append("V ").append(y) 
-				.append(" H ").append(x + 29).append(" V ").append(y + 5).append(" H ").append(x + 20).append(" V ").append(y)
-				.append(" H ").append(x + 10).append(" V ").append(y + height + 20).append(" H ").append(x + width).append(" ").toString();
 	}
 
 }

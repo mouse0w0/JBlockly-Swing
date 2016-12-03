@@ -37,6 +37,7 @@ import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.swing.JPanel;
 
@@ -64,15 +65,19 @@ public class Block extends JPanel implements Cloneable {
 		None, Left, TopAndBottom, Top, Bottom
 	}
 	
-	int xOld=0,yOld=0;
+	private int xOld=0,yOld=0;
 	
 	public Block() {
+		uuid = UUID.randomUUID();
+		
 		setLayout(null);
 		setOpaque(false);
 		
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
+				workspace.setSelectBlock(Block.this);
+				setSelected(true);
 				if(e.getButton() == MouseEvent.BUTTON1&&moveable){
 					int x=getX(),y=getY();
 					Container parent = getParent(),c = getParent();
@@ -84,9 +89,7 @@ public class Block extends JPanel implements Cloneable {
 					xOld = e.getXOnScreen() - x;
 					yOld = e.getYOnScreen() - y;
 					
-					setSelected(true);
 					setLocation(x, y);
-					workspace.setSelectBlock(Block.this);
 					parent.revalidate();
 				}else if(e.getButton() == MouseEvent.BUTTON3){
 					BlockMenu.INSTANCE.show(Block.this, e.getX(), e.getY());
@@ -136,28 +139,27 @@ public class Block extends JPanel implements Cloneable {
 		this.next = next;
 	}
 
-	private String message;
+	private UUID uuid;
 	private final List<BlockLine> lines = new ArrayList<>();
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public void addLine(BlockLine line) {
-		line.setParent(this);
-		lines.add(line);
-	}
-
 	private boolean moveable = true;
 	private boolean editable = true;
 	private boolean folded = false;
 	private LayoutType layoutType = LayoutType.Automatic;
 	private ConnectionType connectionType = ConnectionType.None;
 	private String tooltip;
+	
+	public UUID getUUID(){
+		return uuid;
+	}
+	
+	public void setUUID(UUID uuid){
+		this.uuid=uuid;
+	}
+
+	public void addLine(BlockLine line) {
+		line.setParent(this);
+		lines.add(line);
+	}
 
 	public String getTooltip() {
 		return tooltip;
