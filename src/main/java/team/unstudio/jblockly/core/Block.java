@@ -89,6 +89,8 @@ public class Block extends JPanel implements Cloneable {
 					xOld = e.getXOnScreen() - x;
 					yOld = e.getYOnScreen() - y;
 					
+					Block.this.parent=null;
+					workspace.add(Block.this);
 					setLocation(x, y);
 					parent.revalidate();
 				}else if(e.getButton() == MouseEvent.BUTTON3){
@@ -126,7 +128,20 @@ public class Block extends JPanel implements Cloneable {
 	}
 
 	public void setBlockParent(Block parent) {
+		if(this.parent!=null)parent.remove(this);
 		this.parent = parent;
+		if(parent!=null)parent.add(this);
+		else{
+			workspace.add(this);
+			int x=getX(),y=getY();
+			Container c = getParent();
+			while(!(c instanceof BlockWorkspace)){
+				x+=c.getX();
+				y+=c.getY();
+				c=c.getParent();
+			}
+			setLocation(x, y);
+		}
 	}
 
 	private Block next = null;
@@ -235,7 +250,7 @@ public class Block extends JPanel implements Cloneable {
 	
 	public void dispose() {
 		for (BlockLine line : lines)
-			line.dispose();
+			line.setParent(null);
 	}
 
 	@Override
