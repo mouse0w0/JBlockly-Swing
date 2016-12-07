@@ -140,7 +140,7 @@ public class BlockRender {
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
 	 * Left's path
 	 */
-	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 ";
+	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 Z ";
 
 	
 	public static String getBlockTop(ConnectionType type){
@@ -206,7 +206,7 @@ public class BlockRender {
 	 * @param height
 	 * @return
 	 */
-	public static String getBlockBottomConnection(int x, int y, int width, int height) {
+	public static String getBlockBottomConnection(int x, int y) {
 		return new StringBuilder().append("V ").append(y).append(" H ").append(x + 19).append(" V ").append(y + 5)
 				.append(" H ").append(x + 10).append(" V ").append(y).append(" H ").append(x).append(" Z ").toString();
 	}
@@ -221,8 +221,20 @@ public class BlockRender {
 	 * @param height
 	 * @return
 	 */
-	public static String getBlockBottom(int x, int y, int width, int height) {
+	public static String getBlockBottom(int x, int y) {
 		return new StringBuilder().append("V ").append(y).append(" H ").append(x).append(" Z ").toString();
+	}
+	
+	public static String getBlockBottom(ConnectionType type,int x, int y) {
+		switch (type) {
+		case Bottom:
+		case TopAndBottom:
+			return getBlockBottomConnection(x, y);
+		case Left:
+			return getBlockBottom(x, y)+BLOCK_SIDE_INSERT;
+		default:
+			return getBlockBottom(x, y);
+		}
 	}
 
 }

@@ -73,16 +73,16 @@ public class BlockLine {
 		doLayout();
 	}
 
-	public double getHeight() {
-		double height = 0;
+	public int getHeight() {
+		int height = 0;
 		for (BlockComponent component : components)
 			if (component.getHeight() > height)
 				height = component.getHeight();
 		return height;
 	}
 
-	public double getWidth() {
-		double width = BlockUtils.HGAP;
+	public int getWidth() {
+		int width = BlockUtils.HGAP;
 		for (BlockComponent component : components)
 			width += component.getWidth() + BlockUtils.HGAP;
 		return width;

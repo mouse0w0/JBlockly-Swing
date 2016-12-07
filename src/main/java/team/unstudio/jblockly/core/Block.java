@@ -259,9 +259,12 @@ public class Block extends JPanel implements Cloneable {
 		StringBuilder svg = new StringBuilder(BlockRender.getBlockTop(connectionType));
 		for (BlockLine line : lines) {
 			line.setLocation(x, y);
+			svg.append(BlockRender.getBlockSide(line.getLineType(), line.getX(), line.getY(), line.getWidth(), line.getHeight()));
 			y+=line.getHeight()+BlockUtils.VGAP;
 		}
+		svg.append(BlockRender.getBlockBottom(connectionType, x, y));
 		if(next!=null)next.setLocation(x, y);
+		area = new Area(BlockRender.getPathFromSVG(svg.toString()));
 	}
 	
 	@Override
@@ -279,7 +282,12 @@ public class Block extends JPanel implements Cloneable {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_DEFAULT);
 		
-		g2d.setColor(new Color(color>>16,(color>>8)%256,color%256));
+		Color color = new Color(this.color>>16,(this.color>>8)%256,this.color%256);
+		
+		g2d.setColor(color);
 		g2d.fill(area);
+		
+		g2d.setColor(color.darker());
+		g2d.draw(area);
 	}
 }
