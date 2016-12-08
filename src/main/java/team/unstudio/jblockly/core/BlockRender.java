@@ -50,50 +50,53 @@ public class BlockRender {
 		//获取SVG指令
 		for(int i=0;i<svg.length();i++){
 			if(Character.isLetter(svg.charAt(i))){
+				boolean flag = false;
 				for(int j=i+1;j<svg.length();j++){
 					if(Character.isLetter(svg.charAt(j))){
 						svgcommands.add(svg.substring(i, j));
-						i=j-1;
-					}else if(j==svg.length()+1){
-						svgcommands.add(svg.substring(i));
-						i=j;
+						flag = true;
+						break;
 					}
+				}
+				if(!flag){
+					svgcommands.add(svg.substring(i));
+					break;
 				}
 			}
 		}
 		
 		//将SVG指令添加到Path
 		for(String command:svgcommands){
-			String args[] = command.replaceAll(",", " ").split(" ");
+			String args[] = command.substring(1).replaceAll(" ", ",").split(",");
 			double values[] = new double[args.length-1];
 			for(int i=1;i<args.length;i++){
 				try{
 					values[i-1] = Double.parseDouble(args[i]);
 				}catch(NumberFormatException e){
-					throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]", e);
+					throw new SVGFormatException("Parameter error '"+args[i]+"'. SVGPath: ["+svg+"]", e);
 				}
 			}
 			double tempX=0,tempY=0;
-			switch (Character.toLowerCase(command.charAt(0))) {
+			switch (Character.toUpperCase(command.charAt(0))) {
 			case 'M':
-				if(values.length<2) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]");
+				if(values.length<2) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
 				path.moveTo(values[0], values[1]);
 				tempX = values[0];
 				tempY = values[1];
 				break;
 			case 'L':
-				if(values.length<2) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]");
+				if(values.length<2) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
 				path.lineTo(values[0], values[1]);
 				tempX = values[0];
 				tempY = values[1];
 				break;
 			case 'H':
-				if(values.length<1) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]");
+				if(values.length<1) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
 				path.lineTo(values[0], tempY);
 				tempX = values[0];
 				break;
 			case 'V':
-				if(values.length<1) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]");
+				if(values.length<1) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
 				path.lineTo(tempX, values[0]);
 				tempY = values[0];
 				break;
@@ -102,22 +105,22 @@ public class BlockRender {
 				break;
 			case 'C':
 			case 'S':
-				if(values.length<6) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]");
+				if(values.length<6) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
 				path.curveTo(values[0], values[1], values[2], values[3], values[4], values[5]);
 				tempX = values[4];
 				tempY = values[5];
 				break;
 			case 'Q':
 			case 'T':
-				if(values.length<4) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+" ]");
+				if(values.length<4) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
 				path.quadTo(values[0], values[1], values[2], values[3]);
 				tempX = values[2];
 				tempY = values[3];
 				break;
 			case 'A':
-				throw new SVGFormatException("Unsupported symbol \"A\". SVGPath: ["+svg+" ]");
+				throw new SVGFormatException("Unsupported symbol \"A\". SVGPath: ["+svg+"]");
 			default:
-				throw new SVGFormatException("Unknown symbol. SVGPath: ["+svg+" ]");
+				throw new SVGFormatException("Unknown symbol '"+command+"'. SVGPath: ["+svg+"]");
 			}
 		}
 		
@@ -140,7 +143,7 @@ public class BlockRender {
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
 	 * Left's path
 	 */
-	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 Z ";
+	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 Z";
 
 	
 	public static String getBlockTop(ConnectionType type){
@@ -208,7 +211,7 @@ public class BlockRender {
 	 */
 	public static String getBlockBottomConnection(int x, int y) {
 		return new StringBuilder().append("V ").append(y).append(" H ").append(x + 19).append(" V ").append(y + 5)
-				.append(" H ").append(x + 10).append(" V ").append(y).append(" H ").append(x).append(" Z ").toString();
+				.append(" H ").append(x + 10).append(" V ").append(y).append(" H ").append(x).append(" Z").toString();
 	}
 
 	/**
@@ -222,7 +225,7 @@ public class BlockRender {
 	 * @return
 	 */
 	public static String getBlockBottom(int x, int y) {
-		return new StringBuilder().append("V ").append(y).append(" H ").append(x).append(" Z ").toString();
+		return new StringBuilder().append("V ").append(y).append(" H ").append(x).append(" ").toString();
 	}
 	
 	public static String getBlockBottom(ConnectionType type,int x, int y) {
@@ -233,7 +236,7 @@ public class BlockRender {
 		case Left:
 			return getBlockBottom(x, y)+BLOCK_SIDE_INSERT;
 		default:
-			return getBlockBottom(x, y);
+			return getBlockBottom(x, y)+"Z";
 		}
 	}
 

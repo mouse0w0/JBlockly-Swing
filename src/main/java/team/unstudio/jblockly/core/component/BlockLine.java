@@ -103,14 +103,18 @@ public class BlockLine {
 	
 	public void addComponent(BlockComponent component){
 		components.add(component);
-		parent.add((Component) component);
-		doLayout();
+		if(parent!=null){
+			parent.add((Component) component);
+			doLayout();
+		}
 	}
 	
 	public void removeComponent(BlockComponent component){
 		components.remove(component);
-		parent.remove((Component)component);
-		doLayout();
+		if(parent!=null){
+			parent.remove((Component)component);
+			doLayout();
+		}
 	}
 
 	public void doLayout() {

@@ -27,7 +27,10 @@ package team.unstudio.jblockly;
 
 import javax.swing.JFrame;
 
+import team.unstudio.jblockly.core.Block;
 import team.unstudio.jblockly.core.BlockWorkspace;
+import team.unstudio.jblockly.core.component.BlockLabel;
+import team.unstudio.jblockly.core.component.BlockLine;
 
 public class BlockEditor{
 
@@ -38,8 +41,17 @@ public class BlockEditor{
 		frame.setSize(1080, 720);
 		BlockWorkspace workspace = new BlockWorkspace();
 		
+		Block block =new Block();
+		BlockLine line = new BlockLine();
+		BlockLabel label = new BlockLabel();
+		label.setText("滑稽的代码块");
+		line.addComponent(label);
+		block.addLine(line);
+		workspace.addBlock(block);
+		
 		frame.setContentPane(workspace);
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }

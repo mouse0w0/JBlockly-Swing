@@ -72,6 +72,7 @@ public class Block extends JPanel implements Cloneable {
 		
 		setLayout(null);
 		setOpaque(false);
+		setBorder(null);
 		
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -92,7 +93,7 @@ public class Block extends JPanel implements Cloneable {
 					Block.this.parent=null;
 					workspace.add(Block.this);
 					setLocation(x, y);
-					parent.revalidate();
+					//parent.revalidate();
 				}else if(e.getButton() == MouseEvent.BUTTON3){
 					BlockMenu.INSTANCE.show(Block.this, e.getX(), e.getY());
 				}

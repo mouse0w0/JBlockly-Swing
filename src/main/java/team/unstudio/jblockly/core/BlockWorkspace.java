@@ -37,7 +37,9 @@ public class BlockWorkspace extends JPanel {
 	private Block selectBlock;
 
 	public BlockWorkspace() {
-		setOpaque(true);
+		setOpaque(false);
+		setLayout(null);
+		setBorder(null);
 	}
 
 	public void addBlock(Block block) {
