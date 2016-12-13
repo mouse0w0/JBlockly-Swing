@@ -30,6 +30,7 @@ import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -290,5 +291,16 @@ public class Block extends JPanel implements Cloneable {
 		
 		g2d.setColor(color.darker());
 		g2d.draw(area);
+	}
+	
+	@Override
+	public Rectangle getBounds() {
+		return area.getBounds();
+	}
+	
+	@Override
+	public Rectangle getBounds(Rectangle rv) {
+		rv.setBounds(getBounds());
+		return rv;
 	}
 }

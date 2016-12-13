@@ -48,6 +48,7 @@ public class BlockEditor{
 		line.addComponent(label);
 		block.addLine(line);
 		workspace.addBlock(block);
+		block.setLocation(100, 100);
 		
 		frame.setContentPane(workspace);
 		frame.setVisible(true);
