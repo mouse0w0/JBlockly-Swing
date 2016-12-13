@@ -36,10 +36,11 @@ public class BlockEditor{
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame();
-		frame.setTitle("JBlock Editor");
+		frame.setTitle("JBlockly Editor");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1080, 720);
 		BlockWorkspace workspace = new BlockWorkspace();
+		workspace.setSize(1080, 720);
 		
 		Block block =new Block();
 		BlockLine line = new BlockLine();

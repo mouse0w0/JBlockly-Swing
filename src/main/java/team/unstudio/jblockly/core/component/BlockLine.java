@@ -73,7 +73,7 @@ public class BlockLine {
 		revalidate();
 	}
 
-	public int getHeight() {
+	public int getComponentHeight() {
 		int height = 0;
 		for (BlockComponent component : components)
 			if (component.getHeight() > height)
@@ -81,7 +81,7 @@ public class BlockLine {
 		return height;
 	}
 
-	public int getWidth() {
+	public int getComponentWidth() {
 		int width = BlockUtils.HGAP;
 		for (BlockComponent component : components)
 			width += component.getWidth() + BlockUtils.HGAP;
@@ -122,6 +122,7 @@ public class BlockLine {
 			int y = getY(),x = getX() + BlockUtils.HGAP;
 			for (BlockComponent c : components) {
 				c.setLocation(x, y);
+				((Component)c).doLayout();
 				x += c.getWidth() + BlockUtils.HGAP;
 			}
 		}else if(align == AlignType.Right){
