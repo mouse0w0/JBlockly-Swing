@@ -66,6 +66,7 @@ public class BlockRender {
 		}
 		
 		//将SVG指令添加到Path
+		double tempX=0,tempY=0;
 		for(String command:svgcommands){
 			String args[] = command.substring(1).replaceAll(" ", ",").split(",");
 			double values[] = new double[args.length-1];
@@ -76,7 +77,6 @@ public class BlockRender {
 					throw new SVGFormatException("Parameter error '"+args[i]+"'. SVGPath: ["+svg+"]", e);
 				}
 			}
-			double tempX=0,tempY=0;
 			switch (Character.toUpperCase(command.charAt(0))) {
 			case 'M':
 				if(values.length<2) throw new SVGFormatException("Parameter error. SVGPath: ["+svg+"]");
@@ -209,9 +209,9 @@ public class BlockRender {
 	 * @param height
 	 * @return
 	 */
-	public static String getBlockBottomConnection(int x, int y) {
-		return new StringBuilder().append("V ").append(y).append(" H ").append(x + 19).append(" V ").append(y + 5)
-				.append(" H ").append(x + 10).append(" V ").append(y).append(" H ").append(x).append(" Z").toString();
+	public static String getBlockBottomConnection(int x, int y, int width, int height) {
+		return new StringBuilder().append("H ").append(width).append(" V ").append(height).append(" H ").append(x + 19).append(" V ").append(height + 5)
+				.append(" H ").append(x + 10).append(" V ").append(height).append(" H ").append(x).append(" Z").toString();
 	}
 
 	/**
@@ -224,19 +224,19 @@ public class BlockRender {
 	 * @param height
 	 * @return
 	 */
-	public static String getBlockBottom(int x, int y) {
-		return new StringBuilder().append("V ").append(y).append(" H ").append(x).append(" ").toString();
+	public static String getBlockBottom(int x, int y, int width, int height) {
+		return new StringBuilder().append("H ").append(width).append(" V ").append(height).append(" H ").append(x).append(" ").toString();
 	}
 	
-	public static String getBlockBottom(ConnectionType type,int x, int y) {
+	public static String getBlockBottom(ConnectionType type,int x, int y, int width, int height) {
 		switch (type) {
 		case Bottom:
 		case TopAndBottom:
-			return getBlockBottomConnection(x, y);
+			return getBlockBottomConnection(x, y, width, height);
 		case Left:
-			return getBlockBottom(x, y)+BLOCK_SIDE_INSERT;
+			return getBlockBottom(x, y, width, height)+BLOCK_SIDE_INSERT;
 		default:
-			return getBlockBottom(x, y)+"Z";
+			return getBlockBottom(x, y, width, height)+"Z";
 		}
 	}
 

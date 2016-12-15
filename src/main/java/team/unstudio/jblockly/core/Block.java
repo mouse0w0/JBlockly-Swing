@@ -30,12 +30,12 @@ import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Area;
+import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -174,8 +174,9 @@ public class Block extends JPanel implements Cloneable {
 	}
 
 	public void addLine(BlockLine line) {
-		line.setParent(this);
 		lines.add(line);
+		line.setParent(this);
+		revalidate();
 	}
 
 	public String getTooltip() {
@@ -257,15 +258,15 @@ public class Block extends JPanel implements Cloneable {
 
 	@Override
 	public void doLayout() {
-		int x = 0, y = BlockUtils.VGAP;
+		int height = BlockUtils.VGAP, width=150;
 		StringBuilder svg = new StringBuilder(BlockRender.getBlockTop(connectionType));
 		for (BlockLine line : lines) {
-			line.setLocation(x, y);
+			line.setLocation(0, height);
 			svg.append(BlockRender.getBlockSide(line.getLineType(), line.getX(), line.getY(), line.getComponentWidth(), line.getComponentHeight()));
-			y+=line.getComponentHeight()+BlockUtils.VGAP;
+			height+=line.getComponentHeight()+BlockUtils.VGAP;
 		}
-		svg.append(BlockRender.getBlockBottom(connectionType, x, y));
-		if(next!=null)next.setLocation(x, y);
+		svg.append(BlockRender.getBlockBottom(connectionType, 0, 0,width,height));
+		if(next!=null)next.setLocation(0, height);
 		area = new Area(BlockRender.getPathFromSVG(svg.toString()));
 		setBounds(area.getBounds());
 	}

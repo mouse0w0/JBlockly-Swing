@@ -59,18 +59,18 @@ public class BlockLine {
 
 	public void setX(int x) {
 		this.x = x;
-		revalidate();
+		doLayout();
 	}
 
 	public void setY(int y) {
 		this.y = y;
-		revalidate();
+		doLayout();
 	}
 
 	public void setLocation(int x, int y) {
 		this.x = x;
 		this.y = y;
-		revalidate();
+		doLayout();
 	}
 
 	public int getComponentHeight() {
@@ -97,7 +97,6 @@ public class BlockLine {
 		this.parent = parent;
 		if(parent!=null) {
 			addNotify();
-			revalidate();
 		}
 	}
 	
@@ -105,7 +104,6 @@ public class BlockLine {
 		components.add(component);
 		if(parent!=null){
 			parent.add((Component) component);
-			revalidate();
 		}
 	}
 	
@@ -113,11 +111,12 @@ public class BlockLine {
 		components.remove(component);
 		if(parent!=null){
 			parent.remove((Component)component);
-			revalidate();
 		}
 	}
 
 	public void doLayout() {
+		if(parent==null) return;
+		
 		if(align==AlignType.Left){
 			int y = getY(),x = getX() + BlockUtils.HGAP;
 			for (BlockComponent c : components) {
@@ -191,17 +190,11 @@ public class BlockLine {
 		for (BlockComponent component : components) 
 			parent.add((Component) component);
 		if(getChild()!=null)getParent().add(getChild());
-		revalidate();
 	}
 	
 	public void removeNotify(){
 		for (BlockComponent component : components)
 			component.dispose();
 		if(getChild()!=null)getParent().remove(getChild());
-	}
-	
-	public void revalidate(){
-		if(parent==null) return;
-		doLayout();
 	}
 }
