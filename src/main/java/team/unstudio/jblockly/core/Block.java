@@ -286,7 +286,7 @@ public class Block extends JPanel implements Cloneable {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_DEFAULT);
 		
-		Color color = new Color(this.color>>16,(this.color>>8)%256,this.color%256);
+		Color color = new Color(this.color&0XFF0000,this.color&0X00FF00,this.color&0X0000FF);
 		
 		g2d.setColor(color);
 		g2d.fill(area);
