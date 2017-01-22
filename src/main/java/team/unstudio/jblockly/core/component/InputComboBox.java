@@ -31,11 +31,6 @@ public class InputComboBox<T> extends JComboBox<T> implements ValueInput<T> {
 
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	public void dispose() {
-		getParent().remove(this);
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public T getInput() {

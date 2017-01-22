@@ -32,11 +32,6 @@ public class InputTextField extends JTextField implements ValueInput<String> {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void dispose() {
-		getParent().remove(this);
-	}
-
-	@Override
 	public String getInput() {
 		return getText();
 	}

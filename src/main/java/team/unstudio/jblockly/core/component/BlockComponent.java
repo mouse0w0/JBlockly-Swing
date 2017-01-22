@@ -36,8 +36,6 @@ public interface BlockComponent {
 	int getHeight();
 
 	int getWidth();
-
-	void dispose();
 	
 	boolean isVisible();
 	

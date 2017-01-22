@@ -31,9 +31,4 @@ public class BlockLabel extends JLabel implements BlockComponent {
 
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	public void dispose() {
-		getParent().remove(this);
-	}
-
 }

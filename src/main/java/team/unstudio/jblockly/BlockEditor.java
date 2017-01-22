@@ -28,6 +28,7 @@ package team.unstudio.jblockly;
 import javax.swing.JFrame;
 
 import team.unstudio.jblockly.core.Block;
+import team.unstudio.jblockly.core.Block.ConnectionType;
 import team.unstudio.jblockly.core.BlockWorkspace;
 import team.unstudio.jblockly.core.component.BlockLabel;
 import team.unstudio.jblockly.core.component.BlockLine;
@@ -50,6 +51,7 @@ public class BlockEditor{
 		block.addLine(line);
 		workspace.addBlock(block);
 		block.setLocation(100, 100);
+		block.setConnectionType(ConnectionType.Bottom);
 		
 		frame.setContentPane(workspace);
 		frame.setVisible(true);

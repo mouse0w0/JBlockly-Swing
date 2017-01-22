@@ -95,23 +95,17 @@ public class BlockLine {
 	public void setParent(Block parent) {
 		if(this.parent!=null) removeNotify();
 		this.parent = parent;
-		if(parent!=null) {
-			addNotify();
-		}
+		if(parent!=null) addNotify();
 	}
 	
 	public void addComponent(BlockComponent component){
 		components.add(component);
-		if(parent!=null){
-			parent.add((Component) component);
-		}
+		if(parent!=null) parent.add((Component) component);
 	}
 	
 	public void removeComponent(BlockComponent component){
 		components.remove(component);
-		if(parent!=null){
-			parent.remove((Component)component);
-		}
+		if(parent!=null) parent.remove((Component)component);
 	}
 
 	public void doLayout() {
@@ -187,14 +181,12 @@ public class BlockLine {
 	}
 	
 	public void addNotify(){
-		for (BlockComponent component : components) 
-			parent.add((Component) component);
+		for (BlockComponent component : components) parent.add((Component) component);
 		if(getChild()!=null)getParent().add(getChild());
 	}
 	
 	public void removeNotify(){
-		for (BlockComponent component : components)
-			component.dispose();
+		for (BlockComponent component : components) parent.remove((Component) component);
 		if(getChild()!=null)getParent().remove(getChild());
 	}
 }

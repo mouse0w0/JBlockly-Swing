@@ -35,7 +35,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.geom.Area;
-import java.awt.geom.Path2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -82,7 +81,7 @@ public class Block extends JPanel implements Cloneable {
 				setSelected(true);
 				if(e.getButton() == MouseEvent.BUTTON1&&moveable){
 					int x=getX(),y=getY();
-					Container parent = getParent(),c = getParent();
+					Container c = getParent();
 					while(!(c instanceof BlockWorkspace)){
 						x+=c.getX();
 						y+=c.getY();
@@ -91,9 +90,7 @@ public class Block extends JPanel implements Cloneable {
 					xOld = e.getXOnScreen() - x;
 					yOld = e.getYOnScreen() - y;
 					
-					Block.this.parent=null;
-					workspace.add(Block.this);
-					setLocation(x, y);
+					Block.this.setBlockParent(null);
 					//parent.revalidate();
 				}else if(e.getButton() == MouseEvent.BUTTON3){
 					BlockMenu.INSTANCE.show(Block.this, e.getX(), e.getY());
@@ -103,6 +100,7 @@ public class Block extends JPanel implements Cloneable {
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
 				workspace.repaint();
+				//TODO:Block插入
 			}
 		});
 		addMouseMotionListener(new MouseMotionAdapter() {
@@ -228,7 +226,7 @@ public class Block extends JPanel implements Cloneable {
 	}
 
 	protected Area area;
-	private int color = 0X000000;
+	private int color = 0XFFFFFF;
 	private boolean selected = false;
 	
 	public int getColor() {
@@ -268,7 +266,7 @@ public class Block extends JPanel implements Cloneable {
 		svg.append(BlockRender.getBlockBottom(connectionType, 0, 0,width,height));
 		if(next!=null)next.setLocation(0, height);
 		area = new Area(BlockRender.getPathFromSVG(svg.toString()));
-		setBounds(area.getBounds());
+		setSize(area.getBounds().width+1, area.getBounds().height+1);
 	}
 	
 	@Override
@@ -286,7 +284,7 @@ public class Block extends JPanel implements Cloneable {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_DEFAULT);
 		
-		Color color = new Color(this.color&0XFF0000,this.color&0X00FF00,this.color&0X0000FF);
+		Color color = new Color(this.color&0XFF0000>>16,this.color&0X00FF00>>8,this.color&0X0000FF);
 		
 		g2d.setColor(color);
 		g2d.fill(area);
