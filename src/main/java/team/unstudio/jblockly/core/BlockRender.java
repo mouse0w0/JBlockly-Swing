@@ -137,13 +137,13 @@ public class BlockRender {
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
 	 * TopAndBottom,Top's path
 	 */
-	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 6 H 20 V 0 ";
+	public static final String BLOCK_TOP_CONNECTION = "M 0,0 H 9 V 6 H 25 V 0 ";
 
 	/**
 	 * {@link team.unstudio.jblockly.core.BlockDescriber.ConnectionType} is
 	 * Left's path
 	 */
-	public static final String BLOCK_SIDE_INSERT = "V 19 H -5 V 10 H 0 Z";
+	public static final String BLOCK_SIDE_INSERT = "V 24 H -5 V 10 H 0 Z";
 
 	
 	public static String getBlockTop(ConnectionType type){
@@ -181,7 +181,7 @@ public class BlockRender {
 	 */
 	public static String getBlockInsertSlot(int x, int y, int width, int height) {
 		return new StringBuilder().append("V ").append(y + 9).append(" H ").append(x + width - 6).append(" V ")
-				.append(y + 20).append(" H ").append(x + width).append(" ").toString();
+				.append(y + 25).append(" H ").append(x + width).append(" ").toString();
 	}
 	
 	/**
@@ -195,7 +195,7 @@ public class BlockRender {
 	 */
 	public static String getBlockBranch(int x, int y, int width, int height) {
 		return new StringBuilder().append("V ").append(y) 
-				.append(" H ").append(x + 29).append(" V ").append(y + 5).append(" H ").append(x + 20).append(" V ").append(y)
+				.append(" H ").append(x + 34).append(" V ").append(y + 5).append(" H ").append(x + 20).append(" V ").append(y)
 				.append(" H ").append(x + 10).append(" V ").append(y + height + 20).append(" H ").append(x + width).append(" ").toString();
 	}
 
@@ -210,7 +210,7 @@ public class BlockRender {
 	 * @return
 	 */
 	public static String getBlockBottomConnection(int x, int y, int width, int height) {
-		return new StringBuilder().append("H ").append(width).append(" V ").append(height).append(" H ").append(x + 19).append(" V ").append(height + 5)
+		return new StringBuilder().append("H ").append(width).append(" V ").append(height).append(" H ").append(x + 24).append(" V ").append(height + 5)
 				.append(" H ").append(x + 10).append(" V ").append(height).append(" H ").append(x).append(" Z").toString();
 	}
 

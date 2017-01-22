@@ -34,6 +34,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
@@ -128,7 +129,7 @@ public class Block extends JPanel implements Cloneable {
 	}
 
 	public void setBlockParent(Block parent) {
-		if(this.parent!=null)parent.remove(this);
+		if(this.parent!=null) this.parent.remove(this);
 		this.parent = parent;
 		if(parent!=null)parent.add(this);
 		else{
@@ -263,9 +264,11 @@ public class Block extends JPanel implements Cloneable {
 			svg.append(BlockRender.getBlockSide(line.getLineType(), line.getX(), line.getY(), line.getComponentWidth(), line.getComponentHeight()));
 			height+=line.getComponentHeight()+BlockUtils.VGAP;
 		}
-		svg.append(BlockRender.getBlockBottom(connectionType, 0, 0,width,height));
+		svg.append(BlockRender.getBlockBottom(connectionType, 0, 0,width,height>30?height:30));
 		if(next!=null)next.setLocation(0, height);
+	
 		area = new Area(BlockRender.getPathFromSVG(svg.toString()));
+		if(connectionType==ConnectionType.Left) area.transform(AffineTransform.getTranslateInstance(5, 0));
 		setSize(area.getBounds().width+1, area.getBounds().height+1);
 	}
 	

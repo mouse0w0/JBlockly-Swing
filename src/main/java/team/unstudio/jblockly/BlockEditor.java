@@ -43,7 +43,7 @@ public class BlockEditor{
 		BlockWorkspace workspace = new BlockWorkspace();
 		workspace.setSize(1080, 720);
 		
-		Block block =new Block();
+		{Block block =new Block();
 		BlockLine line = new BlockLine();
 		BlockLabel label = new BlockLabel();
 		label.setText("滑稽的代码块");
@@ -51,7 +51,47 @@ public class BlockEditor{
 		block.addLine(line);
 		workspace.addBlock(block);
 		block.setLocation(100, 100);
-		block.setConnectionType(ConnectionType.Bottom);
+		block.setConnectionType(ConnectionType.Bottom);}
+		
+		{Block block =new Block();
+		BlockLine line = new BlockLine();
+		BlockLabel label = new BlockLabel();
+		label.setText("滑稽的代码块");
+		line.addComponent(label);
+		block.addLine(line);
+		workspace.addBlock(block);
+		block.setLocation(100, 200);
+		block.setConnectionType(ConnectionType.Top);}
+		
+		{Block block =new Block();
+		BlockLine line = new BlockLine();
+		BlockLabel label = new BlockLabel();
+		label.setText("滑稽的代码块");
+		line.addComponent(label);
+		block.addLine(line);
+		workspace.addBlock(block);
+		block.setLocation(100, 300);
+		block.setConnectionType(ConnectionType.TopAndBottom);}
+		
+		{Block block =new Block();
+		BlockLine line = new BlockLine();
+		BlockLabel label = new BlockLabel();
+		label.setText("滑稽的代码块");
+		line.addComponent(label);
+		block.addLine(line);
+		workspace.addBlock(block);
+		block.setLocation(300, 100);
+		block.setConnectionType(ConnectionType.Left);}
+		
+		{Block block =new Block();
+		BlockLine line = new BlockLine();
+		BlockLabel label = new BlockLabel();
+		label.setText("滑稽的代码块");
+		line.addComponent(label);
+		block.addLine(line);
+		workspace.addBlock(block);
+		block.setLocation(300, 200);
+		block.setConnectionType(ConnectionType.None);}
 		
 		frame.setContentPane(workspace);
 		frame.setVisible(true);
