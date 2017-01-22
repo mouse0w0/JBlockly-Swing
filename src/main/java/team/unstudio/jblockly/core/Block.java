@@ -133,7 +133,6 @@ public class Block extends JPanel implements Cloneable {
 		this.parent = parent;
 		if(parent!=null)parent.add(this);
 		else{
-			workspace.add(this);
 			int x=getX(),y=getY();
 			Container c = getParent();
 			while(!(c instanceof BlockWorkspace)){
@@ -141,6 +140,7 @@ public class Block extends JPanel implements Cloneable {
 				y+=c.getY();
 				c=c.getParent();
 			}
+			workspace.addBlock(this);
 			setLocation(x, y);
 		}
 	}

@@ -44,7 +44,7 @@ public class BlockWorkspace extends JPanel {
 
 	public void addBlock(Block block) {
 		block.setWorkspace(this);
-		add(block);
+		add(block,0);
 	}
 	
 	public void removeBlock(Block block) {
