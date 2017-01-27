@@ -257,19 +257,26 @@ public class Block extends JPanel implements Cloneable {
 
 	@Override
 	public void doLayout() {
-		int height = BlockUtils.VGAP, width=150;
+		int height = BlockUtils.VGAP, cwidth=150,width=150;
 		StringBuilder svg = new StringBuilder(BlockRender.getBlockTop(connectionType));
 		for (BlockLine line : lines) {
-			line.setLocation(0, height);
+			line.setLocation(connectionType==ConnectionType.Left?5:0, height);
 			svg.append(BlockRender.getBlockSide(line.getLineType(), line.getX(), line.getY(), line.getComponentWidth(), line.getComponentHeight()));
-			height+=line.getComponentHeight()+BlockUtils.VGAP;
+			height+=line.getHeight()+BlockUtils.VGAP;
+			if(line.getComponentWidth()>cwidth) cwidth=line.getComponentWidth();
+			if(line.getWidth()>width) width=line.getWidth();
 		}
-		svg.append(BlockRender.getBlockBottom(connectionType, 0, 0,width,height>30?height:30));
-		if(next!=null)next.setLocation(0, height);
+		svg.append(BlockRender.getBlockBottom(connectionType, 0, 0,cwidth,height>30?height:30));
+		if(next!=null){
+			next.setLocation(connectionType==ConnectionType.Left?5:0, height);
+			next.doLayout();
+			if(next.getWidth()>width) width=next.getWidth();
+			height+=next.getHeight();
+		}
 	
 		area = new Area(BlockRender.getPathFromSVG(svg.toString()));
 		if(connectionType==ConnectionType.Left) area.transform(AffineTransform.getTranslateInstance(5, 0));
-		setSize(area.getBounds().width+1, area.getBounds().height+1);
+		setSize(width+1, height+1);
 	}
 	
 	@Override

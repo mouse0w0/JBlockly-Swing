@@ -32,6 +32,7 @@ import java.util.List;
 import team.unstudio.jblockly.core.Block;
 import team.unstudio.jblockly.core.BlockUtils;
 
+//TODO:行类型宽度和高度修复
 public class BlockLine {
 
 	public enum AlignType {
@@ -80,12 +81,34 @@ public class BlockLine {
 				height = component.getHeight();
 		return height;
 	}
+	
+	public int getHeight(){
+		switch(line){
+			case Branch:
+				return getComponentHeight()+(getChild()!=null?getChild().getHeight():0);
+			case Insert:
+				return getComponentHeight()>=(getChild()!=null?getChild().getHeight():0)?getComponentHeight():getChild().getHeight();
+			default:
+				return getComponentHeight();
+		}
+	}
 
 	public int getComponentWidth() {
 		int width = BlockUtils.HGAP;
 		for (BlockComponent component : components)
 			width += component.getWidth() + BlockUtils.HGAP;
 		return width;
+	}
+	
+	public int getWidth() {
+		switch(line){
+			case Branch:
+				return getComponentWidth()>=(getChild()!=null?getChild().getWidth():0)?getComponentWidth():getChild().getWidth();
+			case Insert:
+				return getComponentWidth()+(getChild()!=null?getChild().getWidth():0);
+			default:
+				return getComponentHeight();
+		}
 	}
 
 	public Block getParent() {
